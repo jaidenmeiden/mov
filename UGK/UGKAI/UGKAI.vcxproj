@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A93BB924-6F45-4CE2-A819-7F883516E4C2}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>UGKAI</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>..\external\LiteHTML;..\include;..\include\Parsers;include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+    <TargetName>$(ProjectName)d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>..\include;include;..\lib\RTDESK\HRT;..\lib\RTDESK;..\include\Graphics\OpenGL;..\include\Sound;..\include\AI;..\include\Meshes;..\include\Hardware;..\external\sdl;..\external\glm;..\external\OpenGL\GL\include\GL;..\external\assimp-3.0.1270\include\assimp;$(IncludePath)</IncludePath>
+    <LibraryPath>..\user\lib;..\user\lib\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;UGKAI_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>false</SDLCheck>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <ShowIncludes>false</ShowIncludes>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <BuildLog>
+      <Path>$(IntDir)\$(MSBuildProjectName)d.log</Path>
+    </BuildLog>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;UGKAI_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>UPVGameKernel.lib;SDL.lib;SDL_mixer.lib;SDLmain.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Behavior.h" />
+    <ClInclude Include="include\BehaviorAction.h" />
+    <ClInclude Include="include\BehaviorComposite.h" />
+    <ClInclude Include="include\BehaviorCondition.h" />
+    <ClInclude Include="include\BehaviorDecorator.h" />
+    <ClInclude Include="include\BehaviorSelector.h" />
+    <ClInclude Include="include\BehaviorSequence.h" />
+    <ClInclude Include="include\BehaviorTree.h" />
+    <ClInclude Include="include\UGKAI.h" />
+    <ClInclude Include="include\UGKAI_Manager.h" />
+    <ClInclude Include="include\UGKFSMParser.h" />
+    <ClInclude Include="include\UGKFSM_Machine.h" />
+    <ClInclude Include="include\UGKFA_Classic.h" />
+    <ClInclude Include="include\UGKFA_Concurrent_States.h" />
+    <ClInclude Include="include\UGKFA_Inertial.h" />
+    <ClInclude Include="include\UGKFA_Stack.h" />
+    <ClInclude Include="include\UGKFSM_Event.h" />
+    <ClInclude Include="include\UGKFSM_State.h" />
+    <ClInclude Include="include\UGKFSM_Transition.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Behavior.cpp" />
+    <ClCompile Include="src\BehaviorAction.cpp" />
+    <ClCompile Include="src\BehaviorComposite.cpp" />
+    <ClCompile Include="src\BehaviorCondition.cpp" />
+    <ClCompile Include="src\BehaviorDecorator.cpp" />
+    <ClCompile Include="src\BehaviorSelector.cpp" />
+    <ClCompile Include="src\BehaviorSequence.cpp" />
+    <ClCompile Include="src\UGKAI.cpp" />
+    <ClCompile Include="src\UGKFSMParser.cpp" />
+    <ClCompile Include="src\UGKFSM_Machine.cpp" />
+    <ClCompile Include="src\UGKFA_Classic.cpp" />
+    <ClCompile Include="src\UGKFA_Concurrent_States.cpp" />
+    <ClCompile Include="src\UGKFA_Inertial.cpp" />
+    <ClCompile Include="src\UGKFA_Stack.cpp" />
+    <ClCompile Include="src\UGKFSM_Event.cpp" />
+    <ClCompile Include="src\UGKFSM_State.cpp" />
+    <ClCompile Include="src\UGKFSM_Transition.cpp" />
+    <ClCompile Include="UGKAI_Manager.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,74 @@
+<HTML>
+    <HEAD>
+	    <TITLE>Space Invaders</TITLE>
+	    <VERSION>1.0.0</VERSION>
+	    <TYPE>AI</TYPE>
+    </HEAD>
+    <BODY>
+        <IA>
+            <TYPE>DFA/IFA/INFA/FFA/JFA/SM/SCRIPT/NN</TYPE>
+        </IA>
+		<STATE_INIT>STRING</STATE_INIT>
+		<STATE>
+			<NAME>UNBORN</NAME>
+		</STATE>
+		<STATE>
+			<NAME>BORN</NAME>
+            <ON_EVENT>
+				<EVENT_TYPE>0</EVENT_TYPE>
+				<EVENT_NAME>"Action: Moving-Shooting ships"</EVENT_NAME>
+				<EVENT_FUNC>CS_Move</EVENT_FUNC>
+				<EVENT_ORIGIN>2</EVENT_ORIGIN>
+				<EVENT_TRANSITION>MOVING</EVENT_TRANSITION>
+			</ON_EVENT>
+		</STATE>
+
+		<TRANSITION>
+			<NAME>BORNING</NAME>
+			<ORIGIN>UNBORN</ORIGIN>
+			<DESTINATION>BORN</DESTINATION>
+            <PROBABILITY>0.45</PROBABILITY> //Tanto por uno
+            <INERCE>
+                <TYPE>COUNTER/TIME/...</TYPE>
+                <AMOUNT>NUMERO</AMOUNT>
+            </INERCE>
+            <ON_EXIT>
+				<EXIT_TYPE>0</EXIT_TYPE>
+				<EXIT_NAME>Action: Unborn ships</EXIT_NAME>
+				<EXIT_FUNC>NULL</EXIT_FUNC>
+				<EXIT_ORIGIN>0</EXIT_ORIGIN>
+			</ON_EXIT>
+			<ON_ENTRY>
+				<ENTRY_TYPE>0</ENTRY_TYPE>
+				<ENTRY_NAME>Action: Initializing ships</ENTRY_NAME>
+				<ENTRY_FUNC>init_ship</ENTRY_FUNC>
+				<ENTRY_ORIGIN>1</ENTRY_ORIGIN>
+			</ON_ENTRY>
+		</TRANSITION>
+	
+		<VEC_ACTION>
+			
+			
+			<ON_EVENT>
+				<EVENT_TYPE>0</EVENT_TYPE>
+				<EVENT_NAME>Action: Displaying ships</EVENT_NAME>
+				<EVENT_FUNC>CS_Display</EVENT_FUNC>
+				<EVENT_ORIGIN>2</EVENT_ORIGIN>
+				<EVENT_TRANSITION>DISPLAYING</EVENT_TRANSITION>
+			</ON_EVENT>
+			<ON_ENTRY>
+				<ENTRY_TYPE>0</ENTRY_TYPE>
+				<ENTRY_NAME>Action: Dying ships</ENTRY_NAME>
+				<ENTRY_FUNC>CS_Bursting</ENTRY_FUNC>
+				<ENTRY_ORIGIN>3</ENTRY_ORIGIN>
+			</ON_ENTRY>
+			<ON_ENTRY>
+				<ENTRY_TYPE>0</ENTRY_TYPE>
+				<ENTRY_NAME>Action: ship is just out of game</ENTRY_NAME>
+				<ENTRY_FUNC>CS_Kill</ENTRY_FUNC>
+				<ENTRY_ORIGIN>4</ENTRY_ORIGIN>
+			</ON_ENTRY>
+		</VEC_ACTION>		
+    </BODY>
+</HTML>
+
