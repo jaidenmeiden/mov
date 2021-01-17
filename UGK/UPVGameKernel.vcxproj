@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="external\LiteHTML\LiteHTMLAttributes.h" />
+    <ClInclude Include="external\LiteHTML\LiteHTMLCommon.h" />
+    <ClInclude Include="external\LiteHTML\LiteHTMLEntityResolver.h" />
+    <ClInclude Include="external\LiteHTML\LiteHTMLReader.h" />
+    <ClInclude Include="external\LiteHTML\LiteHTMLTag.h" />
+    <ClInclude Include="include\AI\AIManager.h" />
+    <ClInclude Include="include\AI\FSM.h" />
+    <ClInclude Include="include\AI\FSMParser.h" />
+    <ClInclude Include="include\AI\UGKNeuralNetwork.h" />
+    <ClInclude Include="include\AI\UGKNeuralNetworkLayer.h" />
+    <ClInclude Include="include\AI\State.h" />
+    <ClInclude Include="include\CollisionDetect\CBBPoint.h" />
+    <ClInclude Include="include\CollisionDetect\CollisionDetect.h" />
+    <ClInclude Include="include\CollisionDetect\Quadtree.h" />
+    <ClInclude Include="include\CollisionDetect\QuadtreeRoot.h" />
+    <ClInclude Include="include\Graphics\OpenGL\UGKglError.h" />
+    <ClInclude Include="include\Graphics\OpenGL\UGKShader.h" />
+    <ClInclude Include="include\Graphics\OpenGL\UGKShaderProgram.h" />
+    <ClInclude Include="include\Graphics\Window\UGKBasicWindow.h" />
+    <ClInclude Include="include\Graphics\Window\UGKDXWindow.h" />
+    <ClInclude Include="include\Graphics\Window\UGKGLWindow.h" />
+    <ClInclude Include="include\Graphics\Window\UGKMSWindow.h" />
+    <ClInclude Include="include\Graphics\Window\UGKWindow.h" />
+    <ClInclude Include="include\Language\UGKLanguage.h" />
+    <ClInclude Include="include\Language\UGKLanguageParser.h" />
+    <ClInclude Include="include\Language\UGKLanguages_ISO639.h" />
+    <ClInclude Include="include\Meshes\UGKGLTexture.h" />
+    <ClInclude Include="include\Meshes\UGKMesh3D.h" />
+    <ClInclude Include="include\Meshes\UGKMeshManager.h" />
+    <ClInclude Include="include\Meshes\UGKModel_3DS.h" />
+    <ClInclude Include="include\ObjectsManager\UGKCharactersFactory.h" />
+    <ClInclude Include="include\ObjectsManager\UGKCharactersPool.h" />
+    <ClInclude Include="include\Parsers\UGKDeviceParser.h" />
+    <ClInclude Include="include\Parsers\UGKKeyboardParser.h" />
+    <ClInclude Include="include\Particles\ElapsedTime.h" />
+    <ClInclude Include="include\Particles\Random.h" />
+    <ClInclude Include="include\Particles\UGKParticle.h" />
+    <ClInclude Include="include\Particles\UGKParticleCamera.h" />
+    <ClInclude Include="include\Particles\UGKParticleCube.h" />
+    <ClInclude Include="include\Particles\UGKParticleEmitter.h" />
+    <ClInclude Include="include\Particles\UGKParticleInclude.h" />
+    <ClInclude Include="include\Particles\UGKParticleInterpolator.h" />
+    <ClInclude Include="include\Particles\UGKParticlePivotCamera.h" />
+    <ClInclude Include="include\Particles\UGKParticleSphere.h" />
+    <ClInclude Include="include\Particles\UGKParticleSystem.h" />
+    <ClInclude Include="include\Physics\UGKPhysics.h" />
+    <ClInclude Include="include\Physics\UGKPhysicsODE.h" />
+    <ClInclude Include="include\Sound\UGKMusic.h" />
+    <ClInclude Include="include\Sound\UGKMusicsManager.h" />
+    <ClInclude Include="include\Sound\UGKSound.h" />
+    <ClInclude Include="include\Sound\UGKSoundEngine.h" />
+    <ClInclude Include="include\Sound\UGKSoundsManager.h" />
+    <ClInclude Include="include\Sound\UGKSoundSystem.h" />
+    <ClInclude Include="Include\UGK.h" />
+    <ClInclude Include="Include\UGKalgebra.h" />
+    <ClInclude Include="include\UGKCamera.h" />
+    <ClInclude Include="include\UGKCameraManager.h" />
+    <ClInclude Include="include\UGKCharacter.h" />
+    <ClInclude Include="include\UGKEngine.h" />
+    <ClInclude Include="include\UGKLog.h" />
+    <ClInclude Include="Include\UGKOS.h" />
+    <ClInclude Include="include\UGKScore.h" />
+    <ClInclude Include="include\UGKString.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="external\OpenGL\glTexFont.cpp" />
+    <ClCompile Include="lib\RTDESK\HRT\HRTimer.cpp" />
+    <ClCompile Include="lib\RTDESK\HRT\HRTimerManager.cpp" />
+    <ClCompile Include="lib\RTDESK\HRT\HRTimerStat.cpp" />
+    <ClCompile Include="src\AI\AIManager.cpp" />
+    <ClCompile Include="src\AI\FSM.cpp" />
+    <ClCompile Include="src\AI\FSMParser.cpp" />
+    <ClCompile Include="src\AI\State.cpp" />
+    <ClCompile Include="src\AI\UGKNeuralNetwork.cpp" />
+    <ClCompile Include="src\AI\UGKNeuralNetworkLayer.cpp" />
+    <ClCompile Include="src\CollisionDetect\CBBPoint.cpp" />
+    <ClCompile Include="src\CollisionDetect\CollisionDetect.cpp" />
+    <ClCompile Include="src\CollisionDetect\Quadtree.cpp" />
+    <ClCompile Include="src\CollisionDetect\QuadtreeRoot.cpp" />
+    <ClCompile Include="src\Graphics\OpenGL\UGKglError.cpp" />
+    <ClCompile Include="src\Graphics\OpenGL\UGKShader.cpp" />
+    <ClCompile Include="src\Graphics\OpenGL\UGKShaderProgram.cpp" />
+    <ClCompile Include="src\Graphics\Window\UGKGLWindow.cpp" />
+    <ClCompile Include="src\Graphics\Window\UGKMSWindow.cpp" />
+    <ClCompile Include="src\Language\UGKLanguage.cpp" />
+    <ClCompile Include="src\Language\UGKLanguageParser.cpp" />
+    <ClCompile Include="src\Language\UGKLanguages_ISO639.cpp" />
+    <ClCompile Include="src\Meshes\UGKGLTexture.cpp" />
+    <ClCompile Include="src\Meshes\UGKMesh3D.cpp" />
+    <ClCompile Include="src\Meshes\UGKMeshManager.cpp" />
+    <ClCompile Include="src\Meshes\UGKModel_3DS.cpp" />
+    <ClCompile Include="src\ObjectsManager\UGKCharactersFactory.cpp" />
+    <ClCompile Include="src\ObjectsManager\UGKCharactersPool.cpp" />
+    <ClCompile Include="src\Parsers\UGKDeviceParser.cpp" />
+    <ClCompile Include="src\Parsers\UGKKeyboardParser.cpp" />
+    <ClCompile Include="src\Particles\ElapsedTime.cpp" />
+    <ClCompile Include="src\Particles\UGKParticleCamera.cpp" />
+    <ClCompile Include="src\Particles\UGKParticleCube.cpp" />
+    <ClCompile Include="src\Particles\UGKParticlePivotCamera.cpp" />
+    <ClCompile Include="src\Particles\UGKParticleSphere.cpp" />
+    <ClCompile Include="src\Particles\UGKParticleSystem.cpp" />
+    <ClCompile Include="src\Physics\UGKPhysics.cpp" />
+    <ClCompile Include="src\Physics\UGKPhysicsODE.cpp" />
+    <ClCompile Include="src\Sound\UGKSound.cpp" />
+    <ClCompile Include="src\Sound\UGKSoundsManager.cpp" />
+    <ClCompile Include="src\Sound\UGKSoundSystem.cpp" />
+    <ClCompile Include="src\UGKAlgebra.cpp" />
+    <ClCompile Include="src\UGKCamera.cpp" />
+    <ClCompile Include="src\UGKCameraManager.cpp" />
+    <ClCompile Include="src\UGKCharacter.cpp" />
+    <ClCompile Include="src\UGKEngine.cpp" />
+    <ClCompile Include="src\UGKLog.cpp" />
+    <ClCompile Include="src\UGKScore.cpp" />
+    <ClCompile Include="src\UGKString.cpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7F877B8C-8D00-4D77-BFA2-8A6A44AF3D90}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>UPVGameKernel</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <UseOfAtl>Dynamic</UseOfAtl>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <UseOfAtl>Dynamic</UseOfAtl>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>include\Sound;include\AI;include\Parsers;external\LiteHTML;external\assimp-3.0.1270\include\assimp;include\CollisionDetect;lib\RTDESK\HRT;lib\RTDESK;external\OpenGL\GL\include\GL;include\Graphics\OpenGL;external\leap\include;external\sdl;G:\Ramon\DOCENCIA\Asignaturas\Space Invaders\UPVGameKernel\external\RT-DESK\include;external;external\fmod;include\IO\Leap;include;..\external\Eigen;include\Meshes;$(IncludePath)</IncludePath>
+    <IncludePath>include\Physics;external\glm;external\Simple OpenGL Image Library\src;include;include\AI;include\CollisionDetect;include\Graphics\OpenGL;include\Graphics\Window;UGKHW\include;UGKHW\include\Kinect;UGKHW\includ\Leap;UGKHW\include\Wiimote;include\Language;include\Meshes;include\ObjectsManager;include\Parsers;include\Particles;include\Sound;lib\RTDESK;external;external\assimp\include\assimp;external\Eigen;external\fmod;external\Havok\Source;external\Kinect\Include;external\leap\include;external\OpenCV\include;external\OpenGL;external\OpenGL\GL\include\GL;external\OpenGL\GLUT\glut-3.7.6-bin;external\sdl;external\OSG\include;include\SceneGraph;$(IncludePath)</IncludePath>
+    <TargetName>$(ProjectName)d</TargetName>
+    <LibraryPath>..\lib;..\lib\kinect;..\lib\RTDESK\lib;lib\sdl;..\lib\fmod3.75;..\external\assimp\lib32;..\external\leap\x86;..\external\OpenGL\GLEW\glew-1.8.0 win64\lib;..\external\OpenGL\Glee;..\external\OpenGL\GL\lib;$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSDK_LibraryPath_x86);external\OpenCV\x86;lib\Havok\debug;Debug;$(LibraryPath)</LibraryPath>
+    <OutDir>Debug</OutDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>lib\RTDESK;external\assimp-3.0.1270\include\assimp;external\fmod;external\glm;external\leap\include;external\OpenGL;external\OpenGL\GL\include\GL;external\sdl;include\AI;include\CollisionDetect;include\Graphics\OpenGL;include\Graphics\Window;include\Hardware;include\Hardware\Kinect;include\Hardware\Wiimote;include\Hardware\Leap;include\Language;include\Meshes;include\ObjectsManager;include\Parsers;include\Particles;include\Physics;include\SceneGraph;include\Sound;include;lib\RTDESK\HRT;external\Eigen;external\Kinect\Include;external\LiteHTML;external\OpenCV\include;external\Simple OpenGL Image Library\src;external;$(IncludePath)</IncludePath>
+    <LibraryPath>lib\kinect;external\assimp-3.0.1270\lib;lib\RTDESK\lib;external\leap\x86;lib;lib\fmod3.75;lib\OpenGL\GLEW\glew-1.8.0 win64\lib;lib\OpenGL\Glee;external\OpenGL\GL\lib;lib\sdl;$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSDK_LibraryPath_x86);external\OpenCV\x86</LibraryPath>
+    <OutDir>Release</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;UPVGAMEKERNEL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <ExpandAttributedSource>false</ExpandAttributedSource>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PrecompiledHeaderFile />
+      <BrowseInformation>true</BrowseInformation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Leapd.lib;SDL_mixer.lib;SDL.lib;wininet.lib;OpenGL32.lib;glaux.lib;RTDeskEngine.lib;fmodvc.lib;delayimp.lib;glpng.lib;odbc32.lib;odbccp32.lib;glu32.lib;glee.lib;glew32s.lib;glew32.lib;glew32mx.lib;glew32mxs.lib;wsock32.lib;msacm32.lib;winmm.lib;comctl32.lib;wiiuse.lib;assimp.lib;NiTE2.lib;OpenNI2.lib;opencv_core249d.lib;opencv_imgproc249d.lib;opencv_highgui249d.lib;opencv_ml249d.lib;opencv_video249d.lib;opencv_features2d249d.lib;opencv_calib3d249d.lib;opencv_objdetect249d.lib;opencv_contrib249d.lib;opencv_legacy249d.lib;opencv_flann249d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>Nafxcwd.lib;Libcmtd.lib</IgnoreSpecificDefaultLibraries>
+      <AdditionalOptions>
+      </AdditionalOptions>
+      <UACUIAccess>true</UACUIAccess>
+    </Link>
+    <BuildLog>
+      <Path>$(IntDir)\$(MSBuildProjectName)d.log</Path>
+    </BuildLog>
+    <Bscmake>
+      <AdditionalOptions>/verbose:lib %(AdditionalOptions)</AdditionalOptions>
+    </Bscmake>
+    <Lib>
+      <AdditionalDependencies>SDL2_mixer.lib;UGKParserd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;UPVGAMEKERNEL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <OpenMPSupport>true</OpenMPSupport>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SDLCheck>false</SDLCheck>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <FloatingPointExceptions>false</FloatingPointExceptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>Leap.lib;SDL_mixer.lib;SDL.lib;wininet.lib;OpenGL32.lib;glaux.lib;RTDeskEngine.lib;fmodvc.lib;delayimp.lib;glpng.lib;odbc32.lib;odbccp32.lib;glu32.lib;glee.lib;glew32s.lib;glew32.lib;glew32mx.lib;glew32mxs.lib;wsock32.lib;msacm32.lib;winmm.lib;comctl32.lib;wiiuse.lib;assimp.lib;NiTE2.lib;OpenNI2.lib;opencv_core249.lib;opencv_imgproc249.lib;opencv_highgui249.lib;opencv_ml249.lib;opencv_video249.lib;opencv_features2d249.lib;opencv_calib3d249.lib;opencv_objdetect249.lib;opencv_contrib249.lib;opencv_legacy249.lib;opencv_flann249.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>Nafxcw.lib;Libcmt.lib;</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>opencv_core249.lib;opencv_imgproc249.lib;opencv_highgui249.lib;opencv_ml249.lib;opencv_video249.lib;opencv_features2d249.lib;opencv_calib3d249.lib;opencv_objdetect249.lib;opencv_contrib249.lib;opencv_legacy249.lib;opencv_flann249.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

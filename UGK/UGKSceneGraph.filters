@@ -1,0 +1,608 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Archivos de código fuente">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Archivos de encabezado">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Archivos de recursos">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Sound">
+      <UniqueIdentifier>{37aac665-03b0-433c-9ff7-734e0bb2e18e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de código fuente\Sound">
+      <UniqueIdentifier>{deeb36eb-f774-4583-a952-da1254ef8415}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Graphics">
+      <UniqueIdentifier>{654d054c-2593-42bb-a618-3c10b7696b8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Graphics\OpenGL">
+      <UniqueIdentifier>{1bd278b2-70ef-4963-ab46-d54f107bfd25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de código fuente\Graphics">
+      <UniqueIdentifier>{01853ae6-c57f-470c-83fb-197f5f700ca7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de código fuente\Graphics\OpenGL">
+      <UniqueIdentifier>{85c71a1e-3c81-4d08-a1ca-c2dd5f597fb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de código fuente\Collision">
+      <UniqueIdentifier>{ff546d12-efa4-4573-aa81-51196223a9b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Collision">
+      <UniqueIdentifier>{0a6a20ac-2f57-44ea-814e-b8d71209b747}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\AI">
+      <UniqueIdentifier>{f8589517-6643-41a8-8bb1-a0931a44d011}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Meshes">
+      <UniqueIdentifier>{4680316e-a906-4081-b8a8-76d28328c7c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de código fuente\AI">
+      <UniqueIdentifier>{afbe15f9-d369-45d1-9cfe-793daaaa8b10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de código fuente\Meshes">
+      <UniqueIdentifier>{397fb43a-c7df-412d-bc31-cf671c18176d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Parser">
+      <UniqueIdentifier>{c36129c4-a299-49e3-96a4-e6953a358874}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de código fuente\External">
+      <UniqueIdentifier>{fda6344b-b15e-40d7-ae97-d58c0bf2c0df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de código fuente\Hardware">
+      <UniqueIdentifier>{29afea19-56ac-45aa-a7bf-5532e0584aef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Hardware">
+      <UniqueIdentifier>{a80981a8-8493-4b8f-8876-9b903edebb7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de código fuente\Language">
+      <UniqueIdentifier>{f0c78ea5-a848-429e-8808-f9593bf998c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Language">
+      <UniqueIdentifier>{9e3f689b-3af2-4935-bd90-bbbcecd62480}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de código fuente\External\Timers">
+      <UniqueIdentifier>{f3e60757-418e-48c7-89c7-75e3ba27823f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de código fuente\SceneGraph">
+      <UniqueIdentifier>{ea0cc8ca-8a91-4f4e-bf58-420c1e9a83d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\SceneGraph">
+      <UniqueIdentifier>{4cd4a464-7093-40ff-ac65-b809995496dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de código fuente\Particles">
+      <UniqueIdentifier>{d9c11e1f-3b33-412d-b176-0f209d45797a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Particles">
+      <UniqueIdentifier>{7bbaad08-18ac-42ed-a05b-507f188723d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\ObjectsManager">
+      <UniqueIdentifier>{b03fb8b4-ce01-46f5-bdc3-dbe7553d4c56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de código fuente\ObjectsManager">
+      <UniqueIdentifier>{3b2f4c8e-e343-4bad-84be-4909915f9775}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\External">
+      <UniqueIdentifier>{d69d3277-c4a9-456a-98bc-c42e7d64b72a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Graphics\Window">
+      <UniqueIdentifier>{3c0a9e82-f2a0-4bd1-bfa6-6020573ec4c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de código fuente\Graphics\Window">
+      <UniqueIdentifier>{8b8abbdc-7fbd-447e-b2f2-ec689aaca5f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de código fuente\AI\Neural network">
+      <UniqueIdentifier>{944a95fe-7fa5-4955-b1da-daf200c8fcd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\AI\Neural network">
+      <UniqueIdentifier>{68e69ed1-f2bc-45fa-ae4c-19e19bc75bf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Hardware\Kinect">
+      <UniqueIdentifier>{1c138d27-f994-4958-9fd4-f24ab84bcd8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Hardware\Leap">
+      <UniqueIdentifier>{9b2dcb47-1a2b-4882-9d2b-0e11f306d1c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Hardware\Wiimote">
+      <UniqueIdentifier>{c4ad1ef7-450d-47e9-949e-df12a90abb2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de código fuente\Hardware\Kinect">
+      <UniqueIdentifier>{d192bcda-3a73-46d0-aded-ef9d4544cdb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de código fuente\Hardware\Wiimote">
+      <UniqueIdentifier>{24437bc8-7dcb-42ba-8ab4-fc73fbdcff4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de código fuente\Hardware\Leap">
+      <UniqueIdentifier>{eaf90726-4669-4423-92f7-812c7e3a79d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\External\LiteHTML">
+      <UniqueIdentifier>{528580a9-5e41-40bd-a807-d20bcf1d10a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Physics">
+      <UniqueIdentifier>{ea938136-5706-48d8-9b97-e18fb9b1aa84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de código fuente\Physics">
+      <UniqueIdentifier>{7ca3c202-ef76-4896-a2dd-5abf5a232107}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de código fuente\Parsers">
+      <UniqueIdentifier>{0b407214-c1bb-42e3-9bf7-3a6418279bb4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Include\UGKalgebra.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\UGKOS.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\UGK.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Sound\UGKSound.h">
+      <Filter>Archivos de encabezado\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Sound\UGKSoundsManager.h">
+      <Filter>Archivos de encabezado\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Sound\UGKSoundSystem.h">
+      <Filter>Archivos de encabezado\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Sound\UGKMusicsManager.h">
+      <Filter>Archivos de encabezado\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UGKLog.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Sound\UGKMusic.h">
+      <Filter>Archivos de encabezado\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stdafx.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\targetver.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UGKScore.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Graphics\OpenGL\UGKglError.h">
+      <Filter>Archivos de encabezado\Graphics\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UGKCharacter.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CollisionDetect\CollisionDetect.h">
+      <Filter>Archivos de encabezado\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CollisionDetect\Quadtree.h">
+      <Filter>Archivos de encabezado\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CollisionDetect\QuadtreeRoot.h">
+      <Filter>Archivos de encabezado\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Hardware\UGKAudioHardware.h">
+      <Filter>Archivos de encabezado\Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Language\UGKLanguage.h">
+      <Filter>Archivos de encabezado\Language</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Language\UGKLanguageParser.h">
+      <Filter>Archivos de encabezado\Language</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AI\AIManager.h">
+      <Filter>Archivos de encabezado\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AI\FSM.h">
+      <Filter>Archivos de encabezado\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AI\FSMParser.h">
+      <Filter>Archivos de encabezado\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AI\State.h">
+      <Filter>Archivos de encabezado\AI</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Hardware\UGKHardware.h">
+      <Filter>Archivos de encabezado\Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Sound\UGKSoundEngine.h">
+      <Filter>Archivos de encabezado\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Hardware\UGKWebCam.h">
+      <Filter>Archivos de encabezado\Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Parsers\UGKDefaultHTMLLabels.h">
+      <Filter>Archivos de encabezado\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Parsers\UGKDeviceParser.h">
+      <Filter>Archivos de encabezado\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Parsers\UGKHTMLParser.h">
+      <Filter>Archivos de encabezado\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Parsers\UGKHTMLReader.h">
+      <Filter>Archivos de encabezado\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Hardware\UGKGraphicsCard.h">
+      <Filter>Archivos de encabezado\Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UGKString.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UGKEngine.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Meshes\UGKGLTexture.h">
+      <Filter>Archivos de encabezado\Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Meshes\UGKMesh3D.h">
+      <Filter>Archivos de encabezado\Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Meshes\UGKMeshManager.h">
+      <Filter>Archivos de encabezado\Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Meshes\UGKModel_3DS.h">
+      <Filter>Archivos de encabezado\Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Graphics\Window\UGKBasicWindow.h">
+      <Filter>Archivos de encabezado\Graphics\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Graphics\Window\UGKDXWindow.h">
+      <Filter>Archivos de encabezado\Graphics\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Graphics\Window\UGKGLWindow.h">
+      <Filter>Archivos de encabezado\Graphics\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Graphics\Window\UGKMSWindow.h">
+      <Filter>Archivos de encabezado\Graphics\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Graphics\Window\UGKWindow.h">
+      <Filter>Archivos de encabezado\Graphics\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AI\UGKNeuralNetwork.h">
+      <Filter>Archivos de encabezado\AI\Neural network</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AI\UGKNeuralNetworkLayer.h">
+      <Filter>Archivos de encabezado\AI\Neural network</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Parsers\UGKKeyboardParser.h">
+      <Filter>Archivos de encabezado\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Parsers\UGKKy.h">
+      <Filter>Archivos de encabezado\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ObjectsManager\UGKCharactersFactory.h">
+      <Filter>Archivos de encabezado\ObjectsManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ObjectsManager\UGKCharactersPool.h">
+      <Filter>Archivos de encabezado\ObjectsManager</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Language\UGKLanguages_ISO639.h">
+      <Filter>Archivos de encabezado\Language</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Graphics\OpenGL\UGKShader.h">
+      <Filter>Archivos de encabezado\Graphics\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Graphics\OpenGL\UGKShaderProgram.h">
+      <Filter>Archivos de encabezado\Graphics\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UGKCamera.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UGKCameraManager.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Hardware\Kinect\UGKKinect.h">
+      <Filter>Archivos de encabezado\Hardware\Kinect</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Hardware\Kinect\UGKKinect_signal_catch.h">
+      <Filter>Archivos de encabezado\Hardware\Kinect</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Hardware\Kinect\UGKKinectManager.h">
+      <Filter>Archivos de encabezado\Hardware\Kinect</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Hardware\Leap\UGKLeap.h">
+      <Filter>Archivos de encabezado\Hardware\Leap</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Hardware\Leap\UGKLeapGestureRecognizer.h">
+      <Filter>Archivos de encabezado\Hardware\Leap</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Hardware\Leap\UGKLeapGestureTreatment.h">
+      <Filter>Archivos de encabezado\Hardware\Leap</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Hardware\WiiMote\UGKWiimote.h">
+      <Filter>Archivos de encabezado\Hardware\Wiimote</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Hardware\WiiMote\UGKWiimoteManager.h">
+      <Filter>Archivos de encabezado\Hardware\Wiimote</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Hardware\UGKKeyboard.h">
+      <Filter>Archivos de encabezado\Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CollisionDetect\CBBPoint.h">
+      <Filter>Archivos de encabezado\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="external\LiteHTML\LiteHTMLTag.h">
+      <Filter>Archivos de encabezado\External\LiteHTML</Filter>
+    </ClInclude>
+    <ClInclude Include="external\LiteHTML\LiteHTMLAttributes.h">
+      <Filter>Archivos de encabezado\External\LiteHTML</Filter>
+    </ClInclude>
+    <ClInclude Include="external\LiteHTML\LiteHTMLCommon.h">
+      <Filter>Archivos de encabezado\External\LiteHTML</Filter>
+    </ClInclude>
+    <ClInclude Include="external\LiteHTML\LiteHTMLEntityResolver.h">
+      <Filter>Archivos de encabezado\External\LiteHTML</Filter>
+    </ClInclude>
+    <ClInclude Include="external\LiteHTML\LiteHTMLReader.h">
+      <Filter>Archivos de encabezado\External\LiteHTML</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SceneGraph\UGKSceneGraph.h">
+      <Filter>Archivos de encabezado\SceneGraph</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Particles\ElapsedTime.h">
+      <Filter>Archivos de encabezado\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Particles\Random.h">
+      <Filter>Archivos de encabezado\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Particles\UGKParticle.h">
+      <Filter>Archivos de encabezado\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Particles\UGKParticleCube.h">
+      <Filter>Archivos de encabezado\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Particles\UGKParticleEmitter.h">
+      <Filter>Archivos de encabezado\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Particles\UGKParticleInclude.h">
+      <Filter>Archivos de encabezado\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Particles\UGKParticleInterpolator.h">
+      <Filter>Archivos de encabezado\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Particles\UGKParticleSphere.h">
+      <Filter>Archivos de encabezado\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Particles\UGKParticleSystem.h">
+      <Filter>Archivos de encabezado\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Particles\UGKParticleCamera.h">
+      <Filter>Archivos de encabezado\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Particles\UGKParticlePivotCamera.h">
+      <Filter>Archivos de encabezado\Particles</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Hardware\UGKDeviceManager.h">
+      <Filter>Archivos de encabezado\Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Physics\UGKPhysicsODE.h">
+      <Filter>Archivos de encabezado\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Physics\UGKPhysics.h">
+      <Filter>Archivos de encabezado\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Hardware\UGKJoystick.h">
+      <Filter>Archivos de encabezado\Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Hardware\UGKMouse.h">
+      <Filter>Archivos de encabezado\Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Hardware\UGKGameController.h">
+      <Filter>Archivos de encabezado\Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Hardware\UGKHardwareList.h">
+      <Filter>Archivos de encabezado\Hardware</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\UGKAlgebra.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Sound\UGKSound.cpp">
+      <Filter>Archivos de código fuente\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Sound\UGKSoundsManager.cpp">
+      <Filter>Archivos de código fuente\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Sound\UGKSoundSystem.cpp">
+      <Filter>Archivos de código fuente\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UGKLog.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UGKScore.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\OpenGL\UGKglError.cpp">
+      <Filter>Archivos de código fuente\Graphics\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UGKCharacter.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CollisionDetect\CollisionDetect.cpp">
+      <Filter>Archivos de código fuente\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CollisionDetect\Quadtree.cpp">
+      <Filter>Archivos de código fuente\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CollisionDetect\QuadtreeRoot.cpp">
+      <Filter>Archivos de código fuente\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AI\AIManager.cpp">
+      <Filter>Archivos de código fuente\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AI\FSM.cpp">
+      <Filter>Archivos de código fuente\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AI\FSMParser.cpp">
+      <Filter>Archivos de código fuente\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AI\State.cpp">
+      <Filter>Archivos de código fuente\AI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Language\UGKLanguage.cpp">
+      <Filter>Archivos de código fuente\Language</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Language\UGKLanguageParser.cpp">
+      <Filter>Archivos de código fuente\Language</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Parsers\UGKDeviceParser.cpp">
+      <Filter>Archivos de código fuente\Parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="external\OpenGL\glTexFont.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Meshes\UGKGLTexture.cpp">
+      <Filter>Archivos de código fuente\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Meshes\UGKMesh3D.cpp">
+      <Filter>Archivos de código fuente\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Meshes\UGKMeshManager.cpp">
+      <Filter>Archivos de código fuente\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Meshes\UGKModel_3DS.cpp">
+      <Filter>Archivos de código fuente\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Window\UGKGLWindow.cpp">
+      <Filter>Archivos de código fuente\Graphics\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\Window\UGKMSWindow.cpp">
+      <Filter>Archivos de código fuente\Graphics\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AI\UGKNeuralNetwork.cpp">
+      <Filter>Archivos de código fuente\AI\Neural network</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AI\UGKNeuralNetworkLayer.cpp">
+      <Filter>Archivos de código fuente\AI\Neural network</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Parsers\UGKKeyboardParser.cpp">
+      <Filter>Archivos de código fuente\Parsers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ObjectsManager\UGKCharactersPool.cpp">
+      <Filter>Archivos de código fuente\ObjectsManager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CollisionDetect\CBBPoint.cpp">
+      <Filter>Archivos de código fuente\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Language\UGKLanguages_ISO639.cpp">
+      <Filter>Archivos de código fuente\Language</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UGKString.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UGKCamera.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UGKCameraManager.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\OpenGL\UGKShader.cpp">
+      <Filter>Archivos de código fuente\Graphics\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Graphics\OpenGL\UGKShaderProgram.cpp">
+      <Filter>Archivos de código fuente\Graphics\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\RTDESK\HRT\HRTimer.cpp">
+      <Filter>Archivos de código fuente\External\Timers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hardware\UGKAudioHardware.cpp">
+      <Filter>Archivos de código fuente\Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hardware\UGKGraphicsCard.cpp">
+      <Filter>Archivos de código fuente\Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hardware\UGKHardware.cpp">
+      <Filter>Archivos de código fuente\Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hardware\UGKKeyboard.cpp">
+      <Filter>Archivos de código fuente\Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hardware\UGKWebCam.cpp">
+      <Filter>Archivos de código fuente\Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hardware\Kinect\UGKKinect.cpp">
+      <Filter>Archivos de código fuente\Hardware\Kinect</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hardware\Kinect\UGKKinect_signal_catch.cpp">
+      <Filter>Archivos de código fuente\Hardware\Kinect</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hardware\Kinect\UGKKinectManager.cpp">
+      <Filter>Archivos de código fuente\Hardware\Kinect</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hardware\Wiimote\UGKWiimote.cpp">
+      <Filter>Archivos de código fuente\Hardware\Wiimote</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hardware\Wiimote\UGKWiimoteManager.cpp">
+      <Filter>Archivos de código fuente\Hardware\Wiimote</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hardware\Leap\UGKLeap.cpp">
+      <Filter>Archivos de código fuente\Hardware\Leap</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hardware\Leap\UGKLeapGestureRecognizer.cpp">
+      <Filter>Archivos de código fuente\Hardware\Leap</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hardware\Leap\UGKLeapGestureTreatment.cpp">
+      <Filter>Archivos de código fuente\Hardware\Leap</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UGKEngine.cpp">
+      <Filter>Archivos de código fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ObjectsManager\UGKCharactersFactory.cpp">
+      <Filter>Archivos de código fuente\ObjectsManager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SceneGraph\UGKSceneGraph.cpp">
+      <Filter>Archivos de código fuente\SceneGraph</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Particles\ElapsedTime.cpp">
+      <Filter>Archivos de código fuente\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Particles\UGKParticleCube.cpp">
+      <Filter>Archivos de código fuente\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Particles\UGKParticleSphere.cpp">
+      <Filter>Archivos de código fuente\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Particles\UGKParticleSystem.cpp">
+      <Filter>Archivos de código fuente\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Particles\UGKParticleCamera.cpp">
+      <Filter>Archivos de código fuente\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Particles\UGKParticlePivotCamera.cpp">
+      <Filter>Archivos de código fuente\Particles</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hardware\UGKDeviceManager.cpp">
+      <Filter>Archivos de código fuente\Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Physics\UGKPhysics.cpp">
+      <Filter>Archivos de código fuente\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Physics\UGKPhysicsODE.cpp">
+      <Filter>Archivos de código fuente\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hardware\UGKMouse.cpp">
+      <Filter>Archivos de código fuente\Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hardware\UGKJoystick.cpp">
+      <Filter>Archivos de código fuente\Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hardware\UGKGameController.cpp">
+      <Filter>Archivos de código fuente\Hardware</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="lib\RTDESK\HRT\HRTimerManager.cpp">
+      <Filter>Archivos de código fuente\External\Timers</Filter>
+    </ClCompile>
+    <ClCompile Include="lib\RTDESK\HRT\HRTimerStat.cpp">
+      <Filter>Archivos de código fuente\External\Timers</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

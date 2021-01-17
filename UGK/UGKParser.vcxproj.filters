@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\Parsers\UGKDefaultHTMLLabels.cpp" />
+    <ClCompile Include="src\Parsers\UGKHTMLParser.cpp" />
+    <ClCompile Include="src\Parsers\UGKHTMLReader.cpp" />
+    <ClCompile Include="external\LiteHTML\LiteHTMLAttributes.cpp">
+      <Filter>Lite HTML Reader</Filter>
+    </ClCompile>
+    <ClCompile Include="external\LiteHTML\LiteHTMLEntityResolver.cpp">
+      <Filter>Lite HTML Reader</Filter>
+    </ClCompile>
+    <ClCompile Include="external\LiteHTML\LiteHTMLReader.cpp">
+      <Filter>Lite HTML Reader</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Parsers\UGKDefaultHTMLLabels.h" />
+    <ClInclude Include="include\Parsers\UGKHTMLParser.h" />
+    <ClInclude Include="include\Parsers\UGKHTMLReader.h" />
+    <ClInclude Include="external\LiteHTML\LiteHTMLAttributes.h">
+      <Filter>Lite HTML Reader</Filter>
+    </ClInclude>
+    <ClInclude Include="external\LiteHTML\LiteHTMLCommon.h">
+      <Filter>Lite HTML Reader</Filter>
+    </ClInclude>
+    <ClInclude Include="external\LiteHTML\LiteHTMLEntityResolver.h">
+      <Filter>Lite HTML Reader</Filter>
+    </ClInclude>
+    <ClInclude Include="external\LiteHTML\LiteHTMLReader.h">
+      <Filter>Lite HTML Reader</Filter>
+    </ClInclude>
+    <ClInclude Include="external\LiteHTML\LiteHTMLTag.h">
+      <Filter>Lite HTML Reader</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Lite HTML Reader">
+      <UniqueIdentifier>{b822a95a-efae-481d-aeed-371fce964731}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

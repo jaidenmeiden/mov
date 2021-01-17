@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\SceneGraph\UGKSceneGraph.h" />
+    <ClInclude Include="include\SceneGraph\UGKSceneGraphOGRE.h" />
+    <ClInclude Include="include\SceneGraph\UGKSceneGraphOSG.h" />
+    <ClInclude Include="include\SceneGraph\UGKSceneGraphUGK.h" />
+    <ClInclude Include="include\SceneGraph\UGKSGType.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\SceneGraph\UGKSceneGraphOSG.cpp" />
+    <ClCompile Include="src\SceneGraph\UGKSceneGraphUGK.cpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{69B124E0-DE31-4D37-ADC8-E49CB0F093A3}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>UPVGameKernel</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <UseOfAtl>Dynamic</UseOfAtl>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <UseOfAtl>Dynamic</UseOfAtl>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>include\Sound;include\AI;include\Parsers;external\LiteHTML;external\assimp-3.0.1270\include\assimp;include\CollisionDetect;lib\RTDESK\HRT;lib\RTDESK;external\OpenGL\GL\include\GL;include\Graphics\OpenGL;external\leap\include;external\sdl;G:\Ramon\DOCENCIA\Asignaturas\Space Invaders\UPVGameKernel\external\RT-DESK\include;external;external\fmod;include\IO\Leap;include;..\external\Eigen;include\Meshes;$(IncludePath)</IncludePath>
+    <IncludePath>include\Physics;external\glm;external\Simple OpenGL Image Library\src;include;include\AI;include\CollisionDetect;include\Graphics\OpenGL;UGKHW\include;include\Meshes;include\ObjectsManager;include\Parsers;external;external\assimp\include\assimp;external\Eigen;external\fmod;external\Havok\Source;external\Kinect\Include;external\leap\include;external\OpenCV\include;external\OpenGL;external\OpenGL\GL\include\GL;external\OpenGL\GLUT\glut-3.7.6-bin;external\sdl;external\OSG\include;include\SceneGraph;$(IncludePath)</IncludePath>
+    <TargetName>$(ProjectName)d</TargetName>
+    <LibraryPath>..\lib;..\lib\kinect;..\lib\RTDESK\lib;lib\sdl;..\lib\fmod3.75;..\external\assimp\lib32;..\external\leap\x86;..\external\OpenGL\GLEW\glew-1.8.0 win64\lib;..\external\OpenGL\Glee;..\external\OpenGL\GL\lib;$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSDK_LibraryPath_x86);external\OpenCV\x86;lib\Havok\debug;Debug;$(LibraryPath)</LibraryPath>
+    <OutDir>Debug</OutDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>lib\RTDESK;external\assimp-3.0.1270\include\assimp;external\fmod;external\glm;external\leap\include;external\OpenGL;external\OpenGL\GL\include\GL;external\sdl;include\AI;include\CollisionDetect;include\Graphics\OpenGL;include\Graphics\Window;include\Hardware;include\Hardware\Kinect;include\Hardware\Wiimote;include\Hardware\Leap;include\Language;include\Meshes;include\ObjectsManager;include\Parsers;include\Particles;include\Physics;include\SceneGraph;include\Sound;include;lib\RTDESK\HRT;external\Eigen;external\Kinect\Include;external\LiteHTML;external\OpenCV\include;external\Simple OpenGL Image Library\src;external;$(IncludePath)</IncludePath>
+    <LibraryPath>lib\kinect;external\assimp-3.0.1270\lib;lib\RTDESK\lib;external\leap\x86;lib;lib\fmod3.75;lib\OpenGL\GLEW\glew-1.8.0 win64\lib;lib\OpenGL\Glee;external\OpenGL\GL\lib;lib\sdl;$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSDK_LibraryPath_x86);external\OpenCV\x86</LibraryPath>
+    <OutDir>Release</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;UPVGAMEKERNEL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <ExpandAttributedSource>false</ExpandAttributedSource>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PrecompiledHeaderFile />
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Leapd.lib;SDL_mixer.lib;SDL.lib;wininet.lib;OpenGL32.lib;glaux.lib;RTDeskEngine.lib;fmodvc.lib;delayimp.lib;glpng.lib;odbc32.lib;odbccp32.lib;glu32.lib;glee.lib;glew32s.lib;glew32.lib;glew32mx.lib;glew32mxs.lib;wsock32.lib;msacm32.lib;winmm.lib;comctl32.lib;wiiuse.lib;assimp.lib;NiTE2.lib;OpenNI2.lib;opencv_core249d.lib;opencv_imgproc249d.lib;opencv_highgui249d.lib;opencv_ml249d.lib;opencv_video249d.lib;opencv_features2d249d.lib;opencv_calib3d249d.lib;opencv_objdetect249d.lib;opencv_contrib249d.lib;opencv_legacy249d.lib;opencv_flann249d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>Nafxcwd.lib;Libcmtd.lib</IgnoreSpecificDefaultLibraries>
+      <AdditionalOptions>
+      </AdditionalOptions>
+      <UACUIAccess>true</UACUIAccess>
+    </Link>
+    <BuildLog>
+      <Path>$(IntDir)\$(MSBuildProjectName)d.log</Path>
+    </BuildLog>
+    <Bscmake>
+      <AdditionalOptions>/verbose:lib %(AdditionalOptions)</AdditionalOptions>
+    </Bscmake>
+    <Lib>
+      <AdditionalDependencies>SDL2_mixer.lib;UGKParserd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;UPVGAMEKERNEL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <OpenMPSupport>true</OpenMPSupport>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SDLCheck>false</SDLCheck>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <FloatingPointExceptions>false</FloatingPointExceptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>Leap.lib;SDL_mixer.lib;SDL.lib;wininet.lib;OpenGL32.lib;glaux.lib;RTDeskEngine.lib;fmodvc.lib;delayimp.lib;glpng.lib;odbc32.lib;odbccp32.lib;glu32.lib;glee.lib;glew32s.lib;glew32.lib;glew32mx.lib;glew32mxs.lib;wsock32.lib;msacm32.lib;winmm.lib;comctl32.lib;wiiuse.lib;assimp.lib;NiTE2.lib;OpenNI2.lib;opencv_core249.lib;opencv_imgproc249.lib;opencv_highgui249.lib;opencv_ml249.lib;opencv_video249.lib;opencv_features2d249.lib;opencv_calib3d249.lib;opencv_objdetect249.lib;opencv_contrib249.lib;opencv_legacy249.lib;opencv_flann249.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>Nafxcw.lib;Libcmt.lib;</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>opencv_core249.lib;opencv_imgproc249.lib;opencv_highgui249.lib;opencv_ml249.lib;opencv_video249.lib;opencv_features2d249.lib;opencv_calib3d249.lib;opencv_objdetect249.lib;opencv_contrib249.lib;opencv_legacy249.lib;opencv_flann249.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
