@@ -26,7 +26,8 @@ typedef enum {
 	CHARS_BRICK,				///<Pieces that make a bunker
 	CHARS_BUNKER,				///<A collection of bricks together in order to defend the player
 	CHARS_CIRCLESHIP,			///<Alien space ships that turns once and once again in clircles on the screen
-	CHARS_GAME,					///<The game itself 
+	CHARS_GAME,					///<The game itself
+    CHARS_JAIDENMEIDEN			///<Mi nuevo personaje
 	CHARS_LASER,				///<Additional shooting left or right device for the player
 	CHARS_NAVY,					///<Holds all the supplyships and all types of ships
 	CHARS_PLAYER,				///<The player

@@ -16,6 +16,7 @@
 #include <Bunker.h>
 #include <TextureAnimationManager.h>
 #include <Global.h>
+#include <JaidenMeiden.h>
 
 #include <UGKCharactersPool.h>
 #include <SICharactersFactory.h>
@@ -48,6 +49,7 @@ UGKS_String				msgAux;
 CBunker*		currentBunker;
 CShip*			Ship;
 CSupplyShip*	SShip;
+CJaidenMeiden*	JMeiden;
 CCircleShip*	CCShip;
 CPlayer*		Player;
 
@@ -64,6 +66,7 @@ UGKS_String CLeP_Tags[MAXTAGS_L - MAXTAGS_D] =
 {
 	"ACCELERATION",
 	"ANIMATION2D",
+    "AUTOMATICWEAPONS",
 	"BOUNCE",
 	"BUNKER",
 	"CENTER",
@@ -74,6 +77,7 @@ UGKS_String CLeP_Tags[MAXTAGS_L - MAXTAGS_D] =
 	"EXPLOSION",
 	"FILE",
 	"FROM",
+	"FUEL",
 	"GEOMETRY",
 	"HAVE",		//Recursive definition of a character
 	"HEALTH",	//How strong is the character. How much has to be hurt before dieing
@@ -113,10 +117,12 @@ UGKS_String CLeP_Tags[MAXTAGS_L - MAXTAGS_D] =
 	"TIMESHOOTS",
 	"TIMEBONUS",
 	"TIMESUPPLYSHIP",
+	"TIMEJAIDENMEIDEN",
 	"TIMEUPDATE",
 	"TYPE",
 	"UNKNOWN",	//This tag has no matching. It is for management purpouses only. 
 	"VERSION",
+	"WEIGHT",
 	"X",
 	"Y",
 	"Z",
@@ -132,7 +138,9 @@ UGKS_String CLeP_LevelParserMsgs[LPERROR_MAX_LOGMSG] =
 	"Only the attribute NAME or FILE may appear in a group TEXTURE. Nothing more.",
 	"Tag allowed only for SHIP.",
 	"Amount of SupplyShips is lower than the minimum. Reset to 1.",
-	"Amount of SupplyShips is higher than the maximum. Reset to 3."
+	"Amount of SupplyShips is higher than the maximum. Reset to 3.",
+	"Amount of JaidenMeiden is lower than the minimum. Reset to 1.",
+	"Amount of JaidenMeiden is higher than the maximum. Reset to 1."
 };
 
 UGKS_String CLeP_RenderModes[CHAR_MAX_RENDER_MODE] =
@@ -166,6 +174,7 @@ UGKS_String CLeP_Ani2DTypes[MAX_NUM_ANI_TYPES] =
 extern CPlayer*			defaultPlayer;
 extern CShip*			defaultShip;
 extern CSupplyShip*		defaultSShip;
+extern CJaidenMeiden*	defaultJMeiden;
 extern CCircleShip*		defaultCShip;
 extern CBrick*			defaultBrick;
 extern CBunker*			currentBunker;
@@ -299,7 +308,7 @@ CLevelReader::CLevelReader()
    @fn Init
    Initialize Level
    @param UGKS_String FileName : file name
-   Number starts at 0 bunkers    
+   Number starts at 0 bunkersï¿½ï¿½ï¿½ 
    Starts the default values ??at the beginning of each level in the game
 */
 void CLevelReader::Init(UGKS_String FileName)
@@ -329,6 +338,7 @@ void CLevelReader::BeginParse(DWORD dwAppData, bool &bAbort)
 	//Initialize default AI
 	defaultShip->AI = AIManager.GetAI(SIAI_SHIP_DEFAULT);
 	defaultSShip->AI = AIManager.GetAI(SIAI_SUPPLYSHIP_DEFAULT);
+    defaultJMeiden->AI = AIManager.GetAI(SIAI_JAIDENMEIDEN_DEFAULT);
 	defaultCShip->AI = AIManager.GetAI(SIAI_CIRCLESHIP_DEFAULT);
 }
 
@@ -336,7 +346,7 @@ void CLevelReader::BeginParse(DWORD dwAppData, bool &bAbort)
    @fn StartTag
    @param CLiteHTMLTag pTag represents HTML tags
    @param DWORD dwAppData represents the open file
-   @param bool bAbort represents whether the parser is aborted    
+   @param bool bAbort represents whether the parser is abortedï¿½ï¿½ï¿½ 
    This function defines the HTML tags permitted in the matrix of the analyzer and classified by categories or groups
 */
 void CLevelReader::StartTag(CLiteHTMLTag *pTag, DWORD dwAppData, bool &bAbort)
@@ -432,9 +442,11 @@ void CLevelReader::StartTag(CLiteHTMLTag *pTag, DWORD dwAppData, bool &bAbort)
 						break;
 					case ACCELERATION_L:
 					case ANIMATION2D_L:
+                    case AUTOMATICWEAPONS_L:
 					case BOUNCE_L:
 					case EXPLOSION_L:
 					case FROM_L:
+					case FUEL_L:
 					case LIVES_L:
 					case HEALTH_L:
 					case HAVE_L:
@@ -457,10 +469,12 @@ void CLevelReader::StartTag(CLiteHTMLTag *pTag, DWORD dwAppData, bool &bAbort)
 					case TIMESHOOTS_L:
 					case TIMEBONUS_L:
 					case TIMESUPPLYSHIP_L:
+					case TIMEJAIDENMEIDEN_L:
 					case TIMEPLAYER_L:
 					case TIMERENDER_L:
 					case TIMEUPDATE_L:
 					case TYPE_L:
+					case WEIGHT_L:
 					case VELOCITY_L:
 						Push(Tag); //Change to the state specified by the Tag
 						break;
@@ -498,12 +512,14 @@ void CLevelReader::StartTag(CLiteHTMLTag *pTag, DWORD dwAppData, bool &bAbort)
 				{
 					case EXPLOSION_L:
 					case LIVES_L:
+					case FUEL_L:
 					case HEALTH_L:
 					case POSITION_L:
 					case SPEED_L:
 					case MESH_L:
 					case TEXTURE_L:
 					case TYPE_L:
+					case WEIGHT_L:
 					case SHOOT_L:
 						Push(Tag); //Change to the state specified by the Tag
 						break;
@@ -612,7 +628,7 @@ void CLevelReader::StartTag(CLiteHTMLTag *pTag, DWORD dwAppData, bool &bAbort)
    @fn EndTag
    @param CLiteHTMLTag pTag represents HTML tags
    @param DWORD dwAppData represents the open file
-   @param bool bAbort represents whether the parser is aborted    
+   @param bool bAbort represents whether the parser is abortedï¿½ï¿½ï¿½ 
    This function defines the end of a label acuardo permitted its category, If not shown an error message
 */
 void CLevelReader::EndTag(CLiteHTMLTag *pTag, DWORD dwAppData, bool &bAbort)
@@ -634,6 +650,7 @@ void CLevelReader::EndTag(CLiteHTMLTag *pTag, DWORD dwAppData, bool &bAbort)
 	switch(Top())
 	{
 	 case ACCELERATION_L:
+     case AUTOMATICWEAPONS_L:
 	 case BODY_D:
 	 case BOUNCE_L:
 	 case BUNKER_L:
@@ -643,6 +660,7 @@ void CLevelReader::EndTag(CLiteHTMLTag *pTag, DWORD dwAppData, bool &bAbort)
 	 case EPS_L:		//Energy Per Shoot
 	 case EXPLOSION_L:
 	 case FROM_L:
+	 case FUEL_L:
 	 case FILE_L:
 	 case GEOMETRY_L:
 	 case HAVE_L:		//Recursive definition of a character
@@ -682,6 +700,7 @@ void CLevelReader::EndTag(CLiteHTMLTag *pTag, DWORD dwAppData, bool &bAbort)
 	 case TIMESHOOTS_L:
 	 case TIMEBONUS_L:
 	 case TIMESUPPLYSHIP_L:
+	 case TIMEJAIDENMEIDEN_L:
 	 case TIMEPLAYER_L:
 	 case TIMERENDER_L:
 	 case TIMEUPDATE_L:
@@ -689,6 +708,7 @@ void CLevelReader::EndTag(CLiteHTMLTag *pTag, DWORD dwAppData, bool &bAbort)
 	 case TYPE_L:
 	 case VERSION_L:
 	 case VELOCITY_L:
+	 case WEIGHT_L:
 	 case X_L:			//Pos. X
 	 case Y_L:			//Pos. Y
 	 case Z_L:
@@ -722,6 +742,12 @@ void CLevelReader::EndTag(CLiteHTMLTag *pTag, DWORD dwAppData, bool &bAbort)
 							SShip->IndAnimation2D = AnimationsManager.Animations.size()-1;
 						else
 							SShip->IndAnimation2D = AnimationsManager.SearchIndOfName(msgAux);
+							break;					
+                    case CHARS_JAIDENMEIDEN:
+						if(!AnimationExist)
+							JMeiden->IndAnimation2D = AnimationsManager.Animations.size()-1;
+						else
+							JMeiden->IndAnimation2D = AnimationsManager.SearchIndOfName(msgAux);
 							break;
 					case CHARS_CIRCLESHIP:
 						if(!AnimationExist)
@@ -775,7 +801,7 @@ void CLevelReader::EndTag(CLiteHTMLTag *pTag, DWORD dwAppData, bool &bAbort)
    @param UGKS_String &rText represents the text
    @param DWORD dwAppData represents the open file
    @param bool bAbort represents if the the parser is aborted
-   This function defines the text for labels for the game   
+   This function defines the text for labels for the gameï¿½ï¿½ï¿½
    Otherwise it shows an error message
 */
 void CLevelReader::Characters(const UGKS_String &rText, DWORD dwAppData, bool &bAbort)
@@ -827,6 +853,9 @@ if (bAbort) return;
 						break;					
 					 case CHARS_SUPPLYSHIP:
 						 SShip->Hit_duration = f;
+						 break;					 
+                     case CHARS_JAIDENMEIDEN:
+						 JMeiden->Hit_duration = f;
 						 break;
 					 case CHARS_CIRCLESHIP:
 						 CCShip->Hit_duration = f;
@@ -869,6 +898,12 @@ if (bAbort) return;
 							SShip->Health = SShip->MaxHealth = intAux;
 						 else if (intAux == CHAR_HEALTH_INFINITE)
 								SShip->Health = SShip->MaxHealth = CHAR_HEALTH_INFINITE;
+						 break;					 
+                     case CHARS_JAIDENMEIDEN:
+						 if(intAux>0)
+							JMeiden->Health = JMeiden->MaxHealth = intAux;
+						 else if (intAux == CHAR_HEALTH_INFINITE)
+								JMeiden->Health = JMeiden->MaxHealth = CHAR_HEALTH_INFINITE;
 						 break;
 					 case CHARS_CIRCLESHIP:
 						 if(intAux>0)
@@ -922,6 +957,22 @@ if (bAbort) return;
 						SShip->IndMesh		= defaultSShip->IndMesh;
 						SShip->Mesh		= defaultSShip->Mesh;
 						SShip->SetMeshName(defaultSShip->GetMeshName());
+					}
+					break;				
+                case CHARS_JAIDENMEIDEN:
+					msg = rText;
+					if (msg.compare(defaultJMeiden->GetMeshName()))
+					{		//return 0 if strings are equal
+						int ind = MeshesManager.AddModel(msg);
+						JMeiden->IndMesh	= ind;
+						JMeiden->Mesh		= MeshesManager.GetMesh(JMeiden->IndMesh);
+						JMeiden->SetMeshName(JMeiden->Mesh->GetFileName());
+					}
+					else
+					{
+						JMeiden->IndMesh		= defaultJMeiden->IndMesh;
+						JMeiden->Mesh		= defaultJMeiden->Mesh;
+						JMeiden->SetMeshName(defaultJMeiden->GetMeshName());
 					}
 					break;
 				case CHARS_SHIP:
@@ -1019,6 +1070,7 @@ if (bAbort) return;
 				case CHARS_PLAYER:
 				case CHARS_SHIP:
 				case CHARS_SUPPLYSHIP:
+				case CHARS_JAIDENMEIDEN:
 				case CHARS_CIRCLESHIP:
 				case CHARS_LASER:
 				case CHARS_BACKGROUND:
@@ -1115,6 +1167,23 @@ if (bAbort) return;
 						
 						SceneGraph.AddCharacter(SShip);
 						break;
+                    case CHARS_JAIDENMEIDEN:
+                        //Create a new node to set inside the scene graph
+                        JMeiden = (CJaidenMeiden*) CharacterPool->get(CHARS_JAIDENMEIDEN, CSS_NO_SUPPLY_SHIP);
+                        *JMeiden = *defaultJMeiden;
+                        JMeiden->AI_Init();
+                        JMeiden->OutEvent(CSS_BORNING);	//v 0->1
+
+                        JMeiden->Scale.v[XDIM] = 0.25;
+                        JMeiden->Scale.v[YDIM] = 0.25;
+                        JMeiden->Scale.v[ZDIM] = 0.25;
+
+                        JMeiden->Rotation.v[XDIM] = 90.0;
+                        JMeiden->Rotation.v[YDIM] = 0.0;
+                        JMeiden->Rotation.v[ZDIM] = 0.0;
+
+                        SceneGraph.AddCharacter(JMeiden);
+                        break;
 					case CHARS_WEAPON:
 						///Not available by the moment
 						break;
@@ -1163,6 +1232,7 @@ if (bAbort) return;
 			case CHARS_PLAYER:
 			case CHARS_SHIP:
 			case CHARS_SUPPLYSHIP:
+			case CHARS_JAIDENMEIDEN:
 			case CHARS_CIRCLESHIP:
 			case CHARS_LASER:
 			case CHARS_BACKGROUND:
@@ -1262,6 +1332,10 @@ if (bAbort) return;
 			case CHARS_SUPPLYSHIP:
 				if (rText.compare(TexturesManager.Textures[defaultSShip->IndTexture2D]->GetFileName()))
 					SShip->IndTexture2D = TexturesManager.CreateTexture(rText);
+				break;			
+            case CHARS_JAIDENMEIDEN:
+				if (rText.compare(TexturesManager.Textures[defaultJMeiden->IndTexture2D]->GetFileName()))
+					JMeiden->IndTexture2D = TexturesManager.CreateTexture(rText);
 				break;
 			case CHARS_CIRCLESHIP:
 				if (rText.compare(TexturesManager.Textures[defaultCShip->IndTexture2D]->GetFileName()))
@@ -1292,6 +1366,12 @@ if (bAbort) return;
 				}
 				break;
 			case CHARS_SUPPLYSHIP:
+				if (!AnimationExist){
+					TexturesManager.CreateTexture(rText);
+					AnimationsManager.Animations.back()->AddPhotogram(TexturesManager.Textures.back());
+				}
+				break;			
+            case CHARS_JAIDENMEIDEN:
 				if (!AnimationExist){
 					TexturesManager.CreateTexture(rText);
 					AnimationsManager.Animations.back()->AddPhotogram(TexturesManager.Textures.back());
@@ -1330,6 +1410,10 @@ if (bAbort) return;
 				case CHARS_SUPPLYSHIP:
 					if (rText.compare(TexturesManager.Textures[defaultSShip->IndTexture3D]->GetFileName()))
 						SShip->IndTexture3D = TexturesManager.CreateTexture(rText);
+					 break;				
+                 case CHARS_JAIDENMEIDEN:
+					if (rText.compare(TexturesManager.Textures[defaultJMeiden->IndTexture3D]->GetFileName()))
+						JMeiden->IndTexture3D = TexturesManager.CreateTexture(rText);
 					 break;
 				case CHARS_CIRCLESHIP:
 					if (rText.compare(TexturesManager.Textures[defaultCShip->IndTexture3D]->GetFileName()))
@@ -1363,6 +1447,9 @@ if (bAbort) return;
 		break;
 	case TIMESUPPLYSHIP_L:
 		Game->DefaultUpdPeriod[CHARS_SUPPLYSHIP] = atof(UGKS_string2charstr(rText));
+		break;	
+    case TIMEJAIDENMEIDEN_L:
+		Game->DefaultUpdPeriod[CHARS_JAIDENMEIDEN] = atof(UGKS_string2charstr(rText));
 		break;
 	case TIMEUPDATE_L:
 		Game->DefaultUpdPeriod[CHARS_GAME] = atof(UGKS_string2charstr(rText));
@@ -1386,6 +1473,7 @@ if (bAbort) return;
 			case CHARS_PLAYER:
 			case CHARS_SHIP:
 			case CHARS_SUPPLYSHIP:
+			case CHARS_JAIDENMEIDEN:
 			case CHARS_CIRCLESHIP:
 			case CHARS_LASER:
 			case CHARS_BACKGROUND:
@@ -1463,6 +1551,9 @@ if (bAbort) return;
 					 break;
 				 case CHARS_SUPPLYSHIP:
 					 SShip->MoveTo(f, SShip->Position.v[YDIM], SShip->Position.v[ZDIM]);
+					 break;				 
+                 case CHARS_JAIDENMEIDEN:
+					 JMeiden->MoveTo(f, JMeiden->Position.v[YDIM], JMeiden->Position.v[ZDIM]);
 					 break;
 				 case CHARS_BONUS:
 				 case CHARS_SHIP:
@@ -1494,6 +1585,9 @@ if (bAbort) return;
 					 break;
 				 case CHARS_SUPPLYSHIP:
 					 SShip->Speed.v[XDIM] = f;
+					 break;				 
+                 case CHARS_JAIDENMEIDEN:
+					 JMeiden->Speed.v[XDIM] = f;
 					 break;
 				 case CHARS_BONUS:
 				 case CHARS_SHIP:
@@ -1538,6 +1632,9 @@ if (bAbort) return;
 					 break;
 				 case CHARS_SUPPLYSHIP:
 					 SShip->MoveTo(SShip->Position.v[XDIM], f, SShip->Position.v[ZDIM]);
+					 break;				 
+                 case CHARS_JAIDENMEIDEN:
+					 JMeiden->MoveTo(JMeiden->Position.v[XDIM], f, JMeiden->Position.v[ZDIM]);
 					 break;
 				 case CHARS_BONUS:
 				 case CHARS_SHIP:
@@ -1567,6 +1664,9 @@ if (bAbort) return;
 					 break;
 				 case CHARS_SUPPLYSHIP: 
 					 SShip->Speed.v[YDIM] = f;
+					 break;				 
+                 case CHARS_JAIDENMEIDEN: 
+					 JMeiden->Speed.v[YDIM] = f;
 					 break;
 				 case CHARS_BONUS:
 				 case CHARS_SHIP:
@@ -1612,6 +1712,9 @@ if (bAbort) return;
 					 break;
 				 case CHARS_SUPPLYSHIP:
 					 SShip->MoveTo(SShip->Position.v[XDIM], SShip->Position.v[YDIM], f);
+					 break;				 
+                 case CHARS_JAIDENMEIDEN:
+					 JMeiden->MoveTo(JMeiden->Position.v[XDIM], JMeiden->Position.v[YDIM], f);
 					 break;
 				 case CHARS_BONUS:
 				 case CHARS_SHIP:
@@ -1641,6 +1744,9 @@ if (bAbort) return;
 					 break;
 				 case CHARS_SUPPLYSHIP:
 					 SShip->Speed.v[ZDIM] = f;
+					 break;				 
+                 case CHARS_JAIDENMEIDEN:
+					 JMeiden->Speed.v[ZDIM] = f;
 					 break;
 				 case CHARS_BONUS:
 				 case CHARS_SHIP:
@@ -1667,7 +1773,7 @@ if (bAbort) return;
    @fn Comment
    @param UGKS_String &rComment represents the string of comments
    @param DWORD dwAppData represents the open file
-   @param bool bAbort represents if the parser is aborted    
+   @param bool bAbort represents if the parser is abortedï¿½ï¿½ï¿½ 
    This function defines Entries for tags
 */
 void CLevelReader::Comment(const UGKS_String &rComment, DWORD dwAppData, bool &bAbort)
@@ -1684,8 +1790,8 @@ void CLevelReader::Comment(const UGKS_String &rComment, DWORD dwAppData, bool &b
 /**   
    @fn EndParse
    @param DWORD dwAppData represents the open file
-   @param bool bAbort represents if the parser is aborted  
-   This function closes the file if the parser is aborted  
+   @param bool bAbort represents if the parser is abortedï¿½ï¿½
+   This function closes the file if the parser is abortedï¿½ï¿½
 */
 void CLevelReader::EndParse(DWORD dwAppData, bool bIsAborted)
 {

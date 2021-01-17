@@ -13,6 +13,7 @@
 #include <Bunker.h>
 #include <Camera.h>			// Header File class Camera
 #include <CircleShip.h>
+#include <JaidenMeiden.h>
 #include <Laser.h>
 #include <Player.h>
 #include <Reactor.h>
@@ -21,7 +22,6 @@
 #include <SIGame.h>
 #include <SupplyShip.h>
 #include <BonusManager.h>
-#include <Navy.h>
 #include <Navy.h>
 
 extern RTDESK_CEngine	*RTDESK_Engine;
@@ -57,6 +57,8 @@ CCharacter* CSICharactersFactory::createNewCharacter(int Type, int subType)
 		break;
 	case  CHARS_GAME:				CAux = new CSIGame();
 		break;
+    case  CHARS_JAIDENMEIDEN:		CAux = new CJaidenMeiden();
+        break;
 	case  CHARS_LASER:				CAux = new CLaser();
 		break;
 	case  CHARS_NAVY:				CAux = new CNavy();

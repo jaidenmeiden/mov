@@ -36,6 +36,7 @@
 #include <Ship.h>
 #include <CircleShip.h>
 #include <SupplyShip.h>
+#include <JaidenMeiden.h>
 #include <Bunker.h>
 #include <UGKCamera.h>			// Header File class Camera
 
@@ -93,6 +94,8 @@ extern RTDESK_CEngine	*RTDESK_Engine;
 
 extern BOOL				MainProgramLooping;
 extern CSceneGraph		SceneGraph;
+
+extern CJaidenMeiden	JaidenMeiden;
 
 //Internal local reader
 CHTMLReader				HTMLReader;		//The real HTML reader. This is charge of every parsing whatever it is for
@@ -354,7 +357,7 @@ void CSIGame::Init(void)
 
 	//Visualization control
 	intermede_angle_total	= 0;	// INTERMEDE ANGLE TOTAL pour l'animation de l'Game->intermede
-	active_splash			= false;// SPLASH SCREEN activé après l'intermède
+	active_splash			= false;// SPLASH SCREEN activï¿½ aprï¿½s l'intermï¿½de
 	initialWidthW			= 600;
 	initialHeightW			= 500;
 
@@ -550,14 +553,18 @@ void CSIGame::LoadGame (UGKS_String  filename, UGKS_String  folder)
 	LevelReader.AssignTags(CLeP_Tags, MAXTAGS_L);
 
 	HTMLReader.ParseFile(filename, folder, &LevelReader);
-	
-	/*UGKS_String msg1 = "Poner aquí el resultado de la actualización de los contenidos del objeot creado por los alumnos. ";
-	
-	msg1 = msg1 + "\nSe puede insertar caracteres de retorno de carro para cada aspecto a presentar.";
-	CString msg = UGKS_string2CString(msg1);
 
-	MessageBox(NULL, msg, L"Resultado", MB_OK);
-	*/
+	std::stringstream ss;
+    ss << "LOADED CHARACTER JAIDEN MEIDEN: \n";
+    ss << "\tPOSITION=" << JaidenMeiden->POSITION << "\n";
+    ss << "\tSPEED=" << JaidenMeiden->SPEED << "\n";
+    ss << "\tHEALTH=" << JaidenMeiden->HEALTH << "\n";
+    ss << "\tWEIGHT=" << JaidenMeiden->WEIGHT << "\n";
+    ss << "\tFUEL=" << JaidenMeiden->FUEL << "\n";
+    ss << "\tAUTOMATICWEAPONS=" << JaidenMeiden->AUTOMATICWEAPONS << "\n";
+    ss << ...CString msg = UGKS_string2CString(ss.str());
+    MessageBox(NULL, msg, L"Resultado parser", MB_OK);
+
 	Navy->SetShipsAttributes();
 }
 
@@ -678,20 +685,20 @@ void CSIGame::Render(void)
 		// Camera zoom modification during the 2D to 3D transition
 
 		if (CSIG_PASSING_2_3D == AI->GetState())
-			glTranslatef ( 0.0, 0.0, Camera->zoom_total_bonus);					// Camera->zoom pendant le passage à mode 3D
+			glTranslatef ( 0.0, 0.0, Camera->zoom_total_bonus);					// Camera->zoom pendant le passage ï¿½ mode 3D
 		else
 			glTranslatef ( 0.0, 0.0, Camera->zoom_total );						// Camera->zoom utilisateur
 		
-		// CAMERA -> modification pendant l'intermède (rotation de la scène)
+		// CAMERA -> modification pendant l'intermï¿½de (rotation de la scï¿½ne)
 		//
-		// la rotation de l'intermède ne se fait pas directement avec un angle incrémenté
-		// pour éviter des opérations trop nombreuses sur la matrice MODEL_VIEW, mais sur
-		// un angle global après la réinitialisation de la matrice par glLoadIdentity() (ci-dessus)
-		glRotatef(intermede_angle_total, -0.3f, 0.55f, 1.0f);			// rotation de l'intermède -.3 .5 1.0
+		// la rotation de l'intermï¿½de ne se fait pas directement avec un angle incrï¿½mentï¿½
+		// pour ï¿½viter des opï¿½rations trop nombreuses sur la matrice MODEL_VIEW, mais sur
+		// un angle global aprï¿½s la rï¿½initialisation de la matrice par glLoadIdentity() (ci-dessus)
+		glRotatef(intermede_angle_total, -0.3f, 0.55f, 1.0f);			// rotation de l'intermï¿½de -.3 .5 1.0
 
-		// CAMERA -> modification utilisateur (clic et déplacement de la souris)
-		glRotatef(Scene.Angle.v[YDIM], 1.0, 0.0, 0.0);								// rotation utilisateur (par rapport à l'axe des x)
-		glRotatef(Scene.Angle.v[XDIM], 0.0, 1.0, 0.0);								// rotation utilisateur (par rapport à l'axe des y)
+		// CAMERA -> modification utilisateur (clic et dï¿½placement de la souris)
+		glRotatef(Scene.Angle.v[YDIM], 1.0, 0.0, 0.0);								// rotation utilisateur (par rapport ï¿½ l'axe des x)
+		glRotatef(Scene.Angle.v[XDIM], 0.0, 1.0, 0.0);								// rotation utilisateur (par rapport ï¿½ l'axe des y)
 
 		// Background	
 		//GUI.display_background(false);										
@@ -719,15 +726,15 @@ void CSIGame::Render(void)
 		if (CHAR_2D != RenderMode)
 		{
 			/// End of SHIPS Lights
-			glEnable(SIGLB_PLAYER_LIGHT);	// éteint la lumière Player
+			glEnable(SIGLB_PLAYER_LIGHT);	// ï¿½teint la lumiï¿½re Player
 			glDisable(SIGLB_SHIP_LIGHT);
 			glDisable(SIGLB_SHIP2_LIGHT);
 		
 			/// End 3D WRAPPER
 			glColor4f (1.0f, 1.0f, 1.0f, 1.0f);
-			glDisable(GL_DEPTH_TEST);		// désactive le test de profondeur
-			glEnable(GL_BLEND);				// active le mélange de couleurs (ici transparence)
-			glDisable(GL_CULL_FACE);		// on affiche les faces "cachées" (le dos des éléments en mode 2D)
+			glDisable(GL_DEPTH_TEST);		// dï¿½sactive le test de profondeur
+			glEnable(GL_BLEND);				// active le mï¿½lange de couleurs (ici transparence)
+			glDisable(GL_CULL_FACE);		// on affiche les faces "cachï¿½es" (le dos des ï¿½lï¿½ments en mode 2D)
 		}else 
 			glDisable(GL_BLEND);
 
@@ -983,7 +990,7 @@ void CSIGame::InitGraphics()
 	Camera->Position.v[XDIM] = 0; Camera->Position.v[YDIM] = 0; Camera->Position.v[ZDIM] = 20;
 
 	if (!Application.Window.FullScreen && !Application.Window.quickFullScreen)
-		if (Application.Window.Width < GraphicsCard.DeskTop.Width && Application.Window.Height < GraphicsCard.DeskTop.Height) // on ne centre que si la fenêtre est + petite que le bureau
+		if (Application.Window.Width < GraphicsCard.DeskTop.Width && Application.Window.Height < GraphicsCard.DeskTop.Height) // on ne centre que si la fenï¿½tre est + petite que le bureau
 	{
 		Application.Window.LeftUpX = (GraphicsCard.DeskTop.Width - Application.Window.Width) / 2;
 		Application.Window.LeftUpY = (GraphicsCard.DeskTop.Height - Application.Window.Height) / 2;
@@ -1004,7 +1011,7 @@ void CSIGame::InitGraphics()
 	glBlendFunc(GL_SRC_ALPHA,GL_ONE);							// Define Alpha Blending
 	glEnable(GL_BLEND);											// Enable Alpha Blending
 	
-	// OPENGL -> QUALITÉ
+	// OPENGL -> QUALITï¿½
 	glShadeModel (GL_SMOOTH);									// Smooth Shading for lines and polygons (for 3D objects)
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);			// Hint for perspective calculations (most accurate)
 	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);						// Hint for lines rasterization (progress bar, 3D objects in Lines3D mode...)
@@ -1049,10 +1056,10 @@ void CSIGame::InitGraphics()
 	glLightfv(SIGLB_SHIP2_LIGHT, GL_DIFFUSE, diffuse2);
 	glLightfv(SIGLB_SHIP2_LIGHT, GL_POSITION, ShipsLightPos2);
 
-	// lumière (réfléchie sur les matériaux)
+	// lumiï¿½re (rï¿½flï¿½chie sur les matï¿½riaux)
 	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, mat_ambient);
 	
-	// PASSAGE 2D à 3D -> camera path, courbe de Bézier (mouvement de caméra pour le passage au mode 3D)
+	// PASSAGE 2D ï¿½ 3D -> camera path, courbe de Bï¿½zier (mouvement de camï¿½ra pour le passage au mode 3D)
 	control_points[0].v[XDIM] =  0; control_points[0].v[YDIM] = 0; control_points[0].v[ZDIM] = 20;
 	control_points[1].v[XDIM] = -8; control_points[1].v[YDIM] = 0; control_points[1].v[ZDIM] = 18;//15
 	control_points[2].v[XDIM] = -2; control_points[2].v[YDIM] = 0; control_points[2].v[ZDIM] =  5;//5
@@ -1350,7 +1357,7 @@ bool CSIGame::Initialize (void)
 	//srand((unsigned)timeGetTime());
 	srand(1234);
 
-	//RT-Desk engine initializatión. RT-Desk is a Discrete Decoupled Simulation and message management Tool
+	//RT-Desk engine initializatiï¿½n. RT-Desk is a Discrete Decoupled Simulation and message management Tool
 	AssignRTDESK();
 
 	if(LevelReaded)
@@ -1627,8 +1634,8 @@ void CSIGame::Display()
 	
 	// Showing all the log strings
 	FontsManager.SetFontSize(8);								// taille du texte des logs
-	if (Application.Window.Width >= UGKCGC_SVGA_HOR_RES)								// logs affichés si résolution >= 800x600
-		for(int i=0; i<Log.LogIndex; i++)							// pour toutes les entrées de log
+	if (Application.Window.Width >= UGKCGC_SVGA_HOR_RES)								// logs affichï¿½s si rï¿½solution >= 800x600
+		for(int i=0; i<Log.LogIndex; i++)							// pour toutes les entrï¿½es de log
 		{
 			FontsManager.SetFontSize ();
 			if (Application.Window.Width >= UGKCGC_XGA_HOR_RES) 
@@ -1838,8 +1845,8 @@ void CSIGame::RunMainLoop()
 			OutEvent(CSIG_FADED);			//v Controlado 11->9
 			break;
 		case CSIG_FADING_OUT2END:
-			///ACHTUNG: Aquí debería incluirse el código para eliminar a TODOS los objetos del sistema, no sólo a las SS
-			///Esto debería además ser incluido como parte de la acción del estado LOST del juego
+			///ACHTUNG: Aquï¿½ deberï¿½a incluirse el cï¿½digo para eliminar a TODOS los objetos del sistema, no sï¿½lo a las SS
+			///Esto deberï¿½a ademï¿½s ser incluido como parte de la acciï¿½n del estado LOST del juego
 			
 			//StartCameraMov();
 			Deinitialize();

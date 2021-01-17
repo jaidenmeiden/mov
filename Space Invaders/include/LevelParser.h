@@ -33,6 +33,7 @@ typedef enum {
 typedef enum {
 	ACCELERATION_L = MAXTAGS_D,		//This tag is for management purpouses only. There is no correspondence to any string label in the HTML file
 	ANIMATION2D_L,
+    AUTOMATICWEAPONS_L,
 	BOUNCE_L,
 	BUNKER_L,
 	CENTER_L,
@@ -43,6 +44,7 @@ typedef enum {
 	EXPLOSION_L,
 	FILE_L,
 	FROM_L,
+    FUEL_L,
 	GEOMETRY_L,
 	HAVE_L,		//Recursive definition of a character
 	HEALTH_L,		//How strong is the character. How much has to be hurt before dieing
@@ -58,15 +60,15 @@ typedef enum {
 	NUMSS_L,
 	NUMLINES_L,
 	PERIODE_L,
-	POSITION_L,		//Posición específica de un personaje
+	POSITION_L,		//Posiciï¿½n especï¿½fica de un personaje
 	RADIO_L,
-	REGENERATION_L, //Regeneración Sí/No
+	REGENERATION_L, //Regeneraciï¿½n Sï¿½/No
 	RENDERMODE_L,
 	SCORES_L,
 	SCORE_L,
 	SHIPSAMOUNT_L,
 	SHOOT_L,		//Kind of shooting
-	SHOOTS_L,		//Max. nº de disparos en el nivel.
+	SHOOTS_L,		//Max. nï¿½ de disparos en el nivel.
 	SIZE_L,
 	SIMULATIONMODE_L,
 	SPEED_L,
@@ -82,10 +84,12 @@ typedef enum {
 	TIMESHOOTS_L,
 	TIMEBONUS_L,
 	TIMESUPPLYSHIP_L,
+    TIMEJAIDENMEIDEN_L,
 	TIMEUPDATE_L,
 	TYPE_L,
 	UNKNOWN_L,		//This tag is for management purpouses only. There is no correspondence to any string label in the HTML file
 	VERSION_L,
+    WEIGHT_L,
 	X_L,			//Pos. X
 	Y_L,			//Pos. Y
 	Z_L,			//Pos. Z
@@ -96,7 +100,7 @@ typedef enum {
 /* Class that loads the values by default in the very beginning of every level in the game
 */
 /**   
-   Reading class is defined with derivation Level or class inheritance ILiteHTMLReaderEvents    
+   Reading class is defined with derivation Level or class inheritance ILiteHTMLReaderEventsï¿½ï¿½ï¿½ 
    Where is the constructor and destructor in addition to starting the analysis file
    @param CE_EXPLOSION_TYPE subType predefined variable for the types of explosion
 */
