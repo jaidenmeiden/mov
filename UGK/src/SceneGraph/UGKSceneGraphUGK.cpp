@@ -4,8 +4,8 @@
 
 *	Prefix: UGKSGUGK_
 
-*	@author Ramón Mollá
-*	@version 2017-09
+*	@author Jaiden RiaÃ±o
+*	@version 2021-01-17
 */
 
 #include <UGKSceneGraph.h>
@@ -19,23 +19,43 @@ using namespace UGK;
 */
 void CSceneGraphUGK::ChangeRenderMode(CHAR_RENDER_MODE RenderMode) 
 { 
-	//INSERT YOUR CODE HERE
+	unsigned int currentChar = 0, size = RootNode.size();
+
+	while (currentChar < size)
+	{
+		RootNode[currentChar]->ChangeRenderMode(RenderMode);
+		currentChar++;
+	}
 }
 
 
 void CSceneGraphUGK::Reset()
 {
-	//INSERT YOUR CODE HERE
+	unsigned int size = RootNode.size();
+	while (size>0);
+	{
+		Pool->save(RootNode[0]);
+		RootNode.erase(RootNode.begin());
+	}
 }
 
 /**
-* @fn: bool CSceneGraphUGK::RemoveCharacter(CCharacter* Char) 
+* @fn: bool CSceneGraphUGK::RemoveCharacter(CCharacter* Char)
 * Walk through the characters in the scene graph. Detect  the character looked for and take it out from the queue and set it into the Pool
 */
-bool CSceneGraphUGK::RemoveCharacter(CCharacter* Char) 
+bool CSceneGraphUGK::RemoveCharacter(CCharacter* Char)
 {
-	//INSERT YOUR CODE HERE
-	return nullptr;
+	unsigned int dequeSize = RootNode.size();
+
+	for (int i = 0; i < dequeSize; i++)
+		if (RootNode[i] == Char)
+		{
+			RootNode[i] = NULL;
+			RootNode.erase(RootNode.begin()+i);
+			Pool->save(Char);
+			return true;
+		}
+	return false;
 };
 
 /**
@@ -44,7 +64,10 @@ bool CSceneGraphUGK::RemoveCharacter(CCharacter* Char)
 */
 void CSceneGraphUGK::Render()
 { 
-	//INSERT YOUR CODE HERE
+	unsigned int dequeSize = RootNode.size();
+
+	for (int i = 0; i < dequeSize; i++)
+		RootNode[i]->Render();
 }
 
 /**
@@ -53,6 +76,9 @@ void CSceneGraphUGK::Render()
 */
 void CSceneGraphUGK::Update()
 {
-	//INSERT YOUR CODE HERE
+	unsigned int dequeSize = RootNode.size();
+
+	for (int i = 0; i < dequeSize; i++)
+		RootNode[i]->Update();
 }
 #endif
