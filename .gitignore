@@ -41,6 +41,24 @@
 *.out
 *.app
 
+# Compiled Additional files (Space Invaders)
+Space Invaders/Debug/*.sbr
+Space Invaders/Debug/*.bsc
+Space Invaders/Debug/*.log
+Space Invaders/Debug/*.recipe
+Space Invaders/Debug/*.exp
+Space Invaders/Debug/*.res
+Space Invaders/Debug/*.txt
+Space Invaders/Debug/*.cache
+Space Invaders/Debug/*.idb
+Space Invaders/Debug/**/*.tlog
+
+# Documentation (Space Invaders)
+Space Invaders/Documentación
+
+# Documentation (UGK)
+UGK/external
+
 ### CLion ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
