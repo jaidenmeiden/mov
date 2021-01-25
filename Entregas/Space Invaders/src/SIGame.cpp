@@ -556,15 +556,14 @@ void CSIGame::LoadGame (UGKS_String  filename, UGKS_String  folder)
 
 	std::stringstream ss;
     ss << "LOADED CHARACTER JAIDEN MEIDEN: \n";
-    ss << "\tPOSITION=" << JaidenMeiden->POSITION << "\n";
-    ss << "\tSPEED=" << JaidenMeiden->SPEED << "\n";
-    ss << "\tHEALTH=" << JaidenMeiden->HEALTH << "\n";
-    ss << "\tWEIGHT=" << JaidenMeiden->WEIGHT << "\n";
-    ss << "\tFUEL=" << JaidenMeiden->FUEL << "\n";
-    ss << "\tAUTOMATICWEAPONS=" << JaidenMeiden->AUTOMATICWEAPONS << "\n";
-    ss << ...CString msg = UGKS_string2CString(ss.str());
+    ss << "\tPOSITION\n";
+    ss << "\tSPEED\n";
+    ss << "\tHEALTH\n";
+    ss << "\tWEIGHT\n";
+    ss << "\tFUEL\n";
+    ss << "\tAUTOMATICWEAPONS\n";
+    CString msg = UGKS_string2CString(ss.str());
     MessageBox(NULL, msg, L"Resultado parser", MB_OK);
-
 	Navy->SetShipsAttributes();
 }
 
@@ -1123,6 +1122,9 @@ void CSIGame::AssignAI2defaultObjects()
 		case CHARS_CIRCLESHIP:
 			C->AI = AIManager.GetAI(SIAI_CIRCLESHIP_DEFAULT);
 			break;
+		case CHARS_JAIDENMEIDEN:
+			C->AI = AIManager.GetAI(SIAI_JAIDENMEIDEN_DEFAULT);
+			break;	
 		default:;
 		}
 	}

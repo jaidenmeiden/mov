@@ -21,14 +21,14 @@
 #include <GlobalDefs.h>
 #include <glext.h>
 
-#define CSS_WIDTH	1.0F
-#define CSS_HEIGHT	0.6F
+#define CSJ_WIDTH	1.0F
+#define CSJ_HEIGHT	0.6F
 
 extern CNavy			*Navy;			///<Singleton to save the general configuration of the enemy Navy
 extern CShootsManager	*ShootsManager;
 
 ///Different name states for the FSMs that control the SS behaviour
-UGKS_String CSS_NameState[CSS_MAXSTATE] =
+UGKS_String CSJ_NameState[CSJ_MAXSTATE] =
         {
                 "DEFAULT",
                 "BORN",
@@ -38,7 +38,7 @@ UGKS_String CSS_NameState[CSS_MAXSTATE] =
         };
 
 ///Sensitive transition names
-UGKS_String CSS_NameTransition[CSS_MAXTRANSITION] =
+UGKS_String CSJ_NameTransition[CSJ_MAXTRANSITION] =
         {
                 "DEFAULT",
                 "BORNING",
@@ -55,9 +55,9 @@ UGKS_String CSS_NameTransition[CSS_MAXTRANSITION] =
 //Class behaviour
 void CJaidenMeiden::Init()
 {
-    Health = MaxHealth	=	CSS_MAX_HEALTH;
-    Hit_duration		=	CSS_MAX_HIT_DURATION;
-    SubType				=	CSS_SUPPLY_SHIP;
+    Health = MaxHealth	=	CSJ_MAX_HEALTH;
+    Hit_duration		=	CSJ_MAX_HIT_DURATION;
+    SubType				=	CSJ_SUPPLY_SHIP;
     Type				=	CHARS_JAIDENMEIDEN;
 
     Speed.v[XDIM]		=	0.002f;	//Units/ms
@@ -65,8 +65,8 @@ void CJaidenMeiden::Init()
     Explosion.Init(SIGLBD_MIN_UPDATETIME_OBJECTS);
     Explosion.Health	=	CS_MAX_EXPLOSION_LIFE;
 
-    AABB[CHAR_BBSIZE][XDIM].Value = CSS_WIDTH;
-    AABB[CHAR_BBSIZE][YDIM].Value = CSS_HEIGHT;
+    AABB[CHAR_BBSIZE][XDIM].Value = CSJ_WIDTH;
+    AABB[CHAR_BBSIZE][YDIM].Value = CSJ_HEIGHT;
     AABB[CHAR_BBSIZE][ZDIM].Value =	0.0f;
 
 #ifdef CHAR_USE_AABB
@@ -83,7 +83,7 @@ CJaidenMeiden::CJaidenMeiden()
 void CJaidenMeiden::AI_Healthing()
 {
     if	(Health < MaxHealth)
-        Health += Timer[CSS_RND_PERIOD].GetAlarmPeriodms()*0.0002f;
+        Health += Timer[CSJ_RND_PERIOD].GetAlarmPeriodms()*0.0002f;
     else Health = MaxHealth;
 }
 
@@ -93,13 +93,13 @@ void CJaidenMeiden::AI_Move()
     PositionPrev=Position;
     //Argument means the amount of miliseconds spent during the last 10 frames/game iterations
     //UGKPHY_EULER integrator. No acceleration taken into account
-    MoveRelTo(Speed.v[XDIM] * Timer[CSS_UPD_PERIOD].GetAlarmPeriodms(), 0.0f, 0.0f);
-    if (Position.v[XDIM] < -CSS_MAX_X_SHIFT)			// Change movement direction
+    MoveRelTo(Speed.v[XDIM] * Timer[CSJ_UPD_PERIOD].GetAlarmPeriodms(), 0.0f, 0.0f);
+    if (Position.v[XDIM] < -CSJ_MAX_X_SHIFT)			// Change movement direction
     {
         //Infinite acceleration
         if (0>Speed.v[XDIM]) Speed.v[XDIM] = -Speed.v[XDIM];
     }
-    else if (Position.v[XDIM] > CSS_MAX_X_SHIFT)
+    else if (Position.v[XDIM] > CSJ_MAX_X_SHIFT)
         //Infinite acceleration
         if (0<Speed.v[XDIM]) Speed.v[XDIM] = -Speed.v[XDIM];
 
@@ -111,7 +111,7 @@ void CJaidenMeiden::AI_Die(void)
 {
     ///Changing internal attributes
     SetDefault();
-    Explosion.Health = float((rand()%100)+ CSS_MAX_HEALTH);
+    Explosion.Health = float((rand()%100)+ CSJ_MAX_HEALTH);
     Collisionable(UGKPHY_NON_COLLISIONABLE);
     EntombMe();
 }
@@ -121,7 +121,7 @@ void CJaidenMeiden::AI_Death()
 {
 }
 
-bool CJaidenMeiden::OutEvent(CSS_JAIDENMEIDEN_TRANSITIONS EventName){ return AI->outEvent(CSS_NameTransition[EventName], NULL, this); }
+bool CJaidenMeiden::OutEvent(CSJ_JAIDENMEIDEN_TRANSITIONS EventName){ return AI->outEvent(CSJ_NameTransition[EventName], NULL, this); }
 
 //Physics
 void CJaidenMeiden::Collided (CCharacter *CollidedChar)
@@ -141,7 +141,7 @@ void CJaidenMeiden::Collided (CCharacter *CollidedChar)
                     {
                         Sound[CN_EXPLOSION_SND]->Play(UGKSND_VOLUME_80);
                         AI_Die();
-                        Explosion.Init(this, Timer[CSS_UPD_PERIOD].GetAlarmPeriodms());
+                        Explosion.Init(this, Timer[CSJ_UPD_PERIOD].GetAlarmPeriodms());
                         Explosion.Activate();
 
                         RTDESK_CMsg *Msg = GetMsgToFill(UMSG_MSG_BASIC_TYPE);
@@ -242,10 +242,10 @@ void CJaidenMeiden::Render()
             Mesh->modelo.scale.v = Scale.v;
 
             // JaidenMeiden touch�
-            if (Hit_duration < CSS_MAX_HIT_DURATION)
+            if (Hit_duration < CSJ_MAX_HIT_DURATION)
             {
-                Hit_duration -= 10.0 * Timer[CSS_UPD_PERIOD].GetAlarmPeriodms();
-                if (Hit_duration <= 0) Hit_duration = CSS_MAX_HIT_DURATION;
+                Hit_duration -= 10.0 * Timer[CSJ_UPD_PERIOD].GetAlarmPeriodms();
+                if (Hit_duration <= 0) Hit_duration = CSJ_MAX_HIT_DURATION;
             }
             // JaidenMeiden normal
             Mesh->modelo.Draw();
@@ -277,11 +277,11 @@ void CJaidenMeiden::Update(void)
     {
         Vector P, S;
 
-        if (Timer[CSS_UPD_PERIOD].IsSounding())
+        if (Timer[CSJ_UPD_PERIOD].IsSounding())
         {
 
 #ifndef XM_CONTINUOUS_WITH_SIMULATE_TIME
-            Timer[CSS_UPD_PERIOD]->ResetAlarm();
+            Timer[CSJ_UPD_PERIOD]->ResetAlarm();
 
             //Next execution time calculation. (TicksToUpdateJaidenMeiden)
             double auxX= abs(AABB[CHAR_BBSIZE][XDIM].Value/Speed.v[XDIM]);
@@ -289,7 +289,7 @@ void CJaidenMeiden::Update(void)
             //double auxZ= abs(AABB[CHAR_BBSIZE][ZDIM].Value/Speed.v[ZDIM]);
             msUpdSShip = UGKALG_Min(auxX,auxY);
             if(msUpdSShip > SIGLBD_MIN_UPDATETIME_OBJECTS) msUpdSShip = SIGLBD_MIN_UPDATETIME_OBJECTS;
-            Timer[CSS_UPD_PERIOD].SetAlarm(Timer[CSS_UPD_PERIOD].ms2Ticks(msUpdSShip));
+            Timer[CSJ_UPD_PERIOD].SetAlarm(Timer[CSJ_UPD_PERIOD].ms2Ticks(msUpdSShip));
 
             //Shooting calculation
             if (( floor((rand()%100000/(1+Navy->ShootsFrequency))/msUpdSShip)) == 1) ///Has the Supply ship to fire?
@@ -298,7 +298,7 @@ void CJaidenMeiden::Update(void)
                       Position.v[YDIM] - .3f,
                       .05f);
                 S.Set(0.0f,
-                      -CSS_SHOOT_SPEED,
+                      -CSJ_SHOOT_SPEED,
                       0.0f);
 
                 if(Navy->WithShoots)
@@ -307,10 +307,10 @@ void CJaidenMeiden::Update(void)
             }
 
             //Move the jaiden meiden
-            OutEvent(CSS_MOVING);	//v 2->2
+            OutEvent(CSJ_MOVING);	//v 2->2
 #else
             bool SynWithRealTime = false;
-			if (Timer[CSS_UPD_PERIOD].IsSounding()) Timer[CSS_UPD_PERIOD].AdvanceOneAlarmPeriod();
+			if (Timer[CSJ_UPD_PERIOD].IsSounding()) Timer[CSJ_UPD_PERIOD].AdvanceOneAlarmPeriod();
 
 			//Next execution time calculation. (TicksToUpdateJaidenMeiden)
 			double auxX= abs(AABB[CHAR_BBSIZE][XDIM].Value/Speed.v[XDIM]);
@@ -320,7 +320,7 @@ void CJaidenMeiden::Update(void)
 			msUpdSShip = UGKALG_Min(auxX, auxY);
 
 			if(msUpdSShip > SIGLBD_MIN_UPDATETIME_OBJECTS) msUpdSShip = SIGLBD_MIN_UPDATETIME_OBJECTS;
-			Timer[CSS_UPD_PERIOD].SetAlarm(Timer[CSS_UPD_PERIOD].ms2Ticks(msUpdSShip));
+			Timer[CSJ_UPD_PERIOD].SetAlarm(Timer[CSJ_UPD_PERIOD].ms2Ticks(msUpdSShip));
 
 			//Shooting calculation
 			if (( floor((rand()%100000/(1+Navy->ShootsFrequency))/msUpdSShip)) == 1) ///Has the Supply ship to fire?
@@ -329,7 +329,7 @@ void CJaidenMeiden::Update(void)
 						Position.v[YDIM] - .3f,
 						.05f);
 				S.Set(0.0f,
-						-CSS_SHOOT_SPEED,
+						-CSJ_SHOOT_SPEED,
 						0.0f);
 
 				if(Navy->WithShoots)
@@ -338,7 +338,7 @@ void CJaidenMeiden::Update(void)
 			}
 
 			//Move the jaiden meiden
-			OutEvent(CSS_MOVING);	//v 2->2
+			OutEvent(CSJ_MOVING);	//v 2->2
 			AI_Move();
 #endif
             if (Explosion.Active())
@@ -362,7 +362,7 @@ void CJaidenMeiden::DiscreteUpdate(void)
 #endif
 
         //Shooting calculation
-        if ((floor((rand() % 100000 / (1 + Navy->ShootsFrequency)) / Timer[CSS_UPD_PERIOD].GetAlarmPeriodms())) == 1) ///Has the Supply ship to fire?
+        if ((floor((rand() % 100000 / (1 + Navy->ShootsFrequency)) / Timer[CSJ_UPD_PERIOD].GetAlarmPeriodms())) == 1) ///Has the Supply ship to fire?
         {
             Vector P, S;
 
@@ -370,7 +370,7 @@ void CJaidenMeiden::DiscreteUpdate(void)
                   Position.v[YDIM] - .3f,
                   .05f);
             S.Set(0.0f,
-                  -CSS_SHOOT_SPEED,
+                  -CSJ_SHOOT_SPEED,
                   0.0f);
 
             if(Navy->WithShoots)
@@ -378,7 +378,7 @@ void CJaidenMeiden::DiscreteUpdate(void)
         }
 
         //Move the jaiden meiden
-        OutEvent(CSS_MOVING);	//v 2->2
+        OutEvent(CSJ_MOVING);	//v 2->2
 
         double auxX= abs(AABB[CHAR_BBSIZE][XDIM].Value/Speed.v[XDIM]);
         double auxY= abs(AABB[CHAR_BBSIZE][YDIM].Value/Speed.v[YDIM]);
@@ -398,7 +398,7 @@ void CJaidenMeiden::DiscreteUpdate(void)
         msgUpd =(cMsgNavy*) GetMsgToFill(UMSG_MSG_NAVY);
         msgUpd->Type = UMSG_MSG_NAVY;
         msgUpd->SubType = UMSG_UPDSSHIPS;
-        SendSelfMsg(msgUpd, Timer[CSS_UPD_PERIOD].ms2Ticks(msUpdSShip));
+        SendSelfMsg(msgUpd, Timer[CSJ_UPD_PERIOD].ms2Ticks(msUpdSShip));
 
 #ifdef DEF_RTD_TIME
         TimerManager.EndAccCounting(SIGLBT_RTDSKMM_TIMING);
@@ -431,14 +431,14 @@ void CJaidenMeiden::ReceiveMessage(RTDESK_CMsg *pMsg) {
 }
 
 ///Called everytime a time slot happens and its health has to be increased
-void *CSS_FSM_Healthing	(LPSTR *args, CJaidenMeiden *JaidenMeiden)
+void *CSJ_FSM_Healthing	(LPSTR *args, CJaidenMeiden *JaidenMeiden)
 {
     JaidenMeiden->AI_Healthing();
     return NULL;
 }
 
 ///Called everytime a time slot happens and a moving has to be done
-void *CSS_FSM_Move		(LPSTR *args, CJaidenMeiden *JaidenMeiden)
+void *CSJ_FSM_Move		(LPSTR *args, CJaidenMeiden *JaidenMeiden)
 {
 
     JaidenMeiden->AI_Move();
@@ -448,10 +448,10 @@ void *CSS_FSM_Move		(LPSTR *args, CJaidenMeiden *JaidenMeiden)
 }
 
 ///Called when the jaiden meiden is going to burst before dying
-void *CSS_FSM_Dye	(LPSTR *args, CJaidenMeiden *JaidenMeiden)
+void *CSJ_FSM_Dye	(LPSTR *args, CJaidenMeiden *JaidenMeiden)
 {
     // JaidenMeiden dead
-    JaidenMeiden->Explosion.Init(JaidenMeiden, JaidenMeiden->Timer[CSS_UPD_PERIOD].GetAlarmPeriodms());
+    JaidenMeiden->Explosion.Init(JaidenMeiden, JaidenMeiden->Timer[CSJ_UPD_PERIOD].GetAlarmPeriodms());
     JaidenMeiden->AI_Die();
 
     RTDESK_CMsg *Msg = JaidenMeiden->GetMsgToFill(UMSG_MSG_BASIC_TYPE);
@@ -460,20 +460,20 @@ void *CSS_FSM_Dye	(LPSTR *args, CJaidenMeiden *JaidenMeiden)
     return NULL;
 };
 
-void *CSS_FSM_Death		(LPSTR *args, CJaidenMeiden *JaidenMeiden)
+void *CSJ_FSM_Death		(LPSTR *args, CJaidenMeiden *JaidenMeiden)
 {
     JaidenMeiden->AI_Die();
     return NULL;
 }
 
 ///Called when the jaiden meiden passed from death to unborn states
-void *CSS_FSM_Unborning (LPSTR *args, CJaidenMeiden *JaidenMeiden)
+void *CSJ_FSM_Unborning (LPSTR *args, CJaidenMeiden *JaidenMeiden)
 {
     JaidenMeiden->AI_Init();
     return NULL;
 }
 
-void *CSS_display(LPSTR *args, CJaidenMeiden *JaidenMeiden)
+void *CSJ_display(LPSTR *args, CJaidenMeiden *JaidenMeiden)
 {
     JaidenMeiden->Render();
     return NULL;

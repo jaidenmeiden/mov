@@ -68,6 +68,7 @@ class CCharactersFactory : IUGKCharactersFactory
 		case  GCHARS_CharacterType::CHARS_SHIP_SHOOT:        return new CShoot();			///<Alien normal space ships shoots
 		case  GCHARS_CharacterType::CHARS_SPHERE_OGIVE:      return new CCharacter();		///<Not available by the moment
 		case  GCHARS_CharacterType::CHARS_SUPPLYSHIP:        return new CSupplyShip();		///<Super ship of the alien troops
+		case  GCHARS_CharacterType::CHARS_JAIDENMEIDEN:      return new CJaidenMeiden();	///<Super ship of the Jaiden Meiden
 		case  GCHARS_CharacterType::CHARS_WEAPON:            return new CCharacter();		///<Not available by the moment
 		case  GCHARS_CharacterType::CHARS_MAX_CHARTYPE:      return new CCharacter();		///<Only for character types management. No object exist in the game for this type
 

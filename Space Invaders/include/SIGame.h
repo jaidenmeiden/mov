@@ -1,6 +1,6 @@
 /**
 *	Definition of the Class Space Invaders Game
-*	General class to support all the attribute specific for the Sàce Invaders Game
+*	General class to support all the attribute specific for the Sï¿½ce Invaders Game
 *	Prefix: CSIG_
 
 *	@author Ramon Molla
@@ -55,6 +55,7 @@ typedef enum {
 typedef enum {
 	SIAI_GAME_DEFAULT,
 	SIAI_SHIP_DEFAULT,
+	SIAI_JAIDENMEIDEN_DEFAULT,
 	SIAI_SUPPLYSHIP_DEFAULT,
 	SIAI_CIRCLESHIP_DEFAULT,
 	SIAI_BONUS_DEFAULT,
@@ -176,7 +177,7 @@ public:
 
 	///Auxiliar attributes for transition management
 	float	intermede_angle_total;	// INTERMEDE ANGLE TOTAL pour l'animation de l'Game->intermede
-	bool	active_splash;			// SPLASH SCREEN activé après l'intermède
+	bool	active_splash;			// SPLASH SCREEN activï¿½ aprï¿½s l'intermï¿½de
 	
 	RTDESK_TIME		NextSimulation;
 
