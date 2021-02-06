@@ -138,10 +138,8 @@ UGKS_String CLeP_LevelParserMsgs[LPERROR_MAX_LOGMSG] =
 	"Only the attribute NAME or FILE may appear in a group TEXTURE. Nothing more.",
 	"Tag allowed only for SHIP.",
 	"Amount of SupplyShips is lower than the minimum. Reset to 1.",
-	"Amount of SupplyShips is higher than the maximum. Reset to 3.",
-	"Amount of JaidenMeiden is lower than the minimum. Reset to 1.",
-	"Amount of JaidenMeiden is higher than the maximum. Reset to 1."
-};
+	"Amount of SupplyShips is higher than the maximum. Reset to 3."
+}; //Nota Jaiden: Como hacer para agregar más mensajes?
 
 UGKS_String CLeP_RenderModes[CHAR_MAX_RENDER_MODE] =
 {
@@ -338,7 +336,7 @@ void CLevelReader::BeginParse(DWORD dwAppData, bool &bAbort)
 	//Initialize default AI
 	defaultShip->AI = AIManager.GetAI(SIAI_SHIP_DEFAULT);
 	defaultSShip->AI = AIManager.GetAI(SIAI_SUPPLYSHIP_DEFAULT);
-    defaultJMeiden->AI = AIManager.GetAI(SIAI_JAIDENMEIDEN_DEFAULT);
+    //defaultJMeiden->AI = AIManager.GetAI(SIAI_JAIDENMEIDEN_DEFAULT); //Nota Jaiden: Profundizar en esta actividad
 	defaultCShip->AI = AIManager.GetAI(SIAI_CIRCLESHIP_DEFAULT);
 }
 
@@ -1172,7 +1170,7 @@ if (bAbort) return;
                         JMeiden = (CJaidenMeiden*) CharacterPool->get(CHARS_JAIDENMEIDEN, CSS_NO_SUPPLY_SHIP);
                         *JMeiden = *defaultJMeiden;
                         JMeiden->AI_Init();
-                        JMeiden->OutEvent(CSS_BORNING);	//v 0->1
+                        //JMeiden->OutEvent(CSJ_BORNING);	//v 0->1 //Nota Jaiden: Profundizar en esta actividad
 
                         JMeiden->Scale.v[XDIM] = 0.25;
                         JMeiden->Scale.v[YDIM] = 0.25;

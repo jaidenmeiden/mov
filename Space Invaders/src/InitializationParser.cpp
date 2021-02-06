@@ -4,7 +4,7 @@ Prefix IP_: Default HTML Labels for all Parsers
 
 *	@author Ramon Molla, Carlos Martinez Perez
 *	@version 2011-02
-*	@author Ramón Mollá
+*	@author Ramï¿½n Mollï¿½
 *	@version 2015-12
 */
 
@@ -17,6 +17,7 @@ Prefix IP_: Default HTML Labels for all Parsers
 #include <Ship.h>
 #include <CircleShip.h>
 #include <SupplyShip.h>
+#include <JaidenMeiden.h>
 #include <Laser.h>
 #include <Bunker.h>
 #include <SITexturesResources.h>
@@ -124,6 +125,7 @@ CBrick*			defaultBrick;
 CPlayer*		defaultPlayer;
 CShip*			defaultShip;
 CSupplyShip*	defaultSShip;
+CJaidenMeiden*	defaultJMeiden;
 CCircleShip*	defaultCShip;
 
 GCHARS_CharacterType CharType;
@@ -153,7 +155,7 @@ CInitializationParser::CInitializationParser()
 /**   
    @fn void CInitializationParser::Init(UGKS_String FileName)
    @param UGKS_String FileName : file name
-   Number starts at 0 bunkers    
+   Number starts at 0 bunkersï¿½ï¿½ï¿½ 
    Starts the default values ??at the beginning of each level in the game
 */
 void CInitializationParser::Init(UGKS_String FileName)
@@ -203,6 +205,11 @@ void CInitializationParser::InitializeSounds2DefaultChar()
 	defaultSShip->SetSound(SoundsManager.GetSound(CGS_DESCEND_SND), CN_DESCEND_SND);		//Every time the whole navy drops down a little bit
 	defaultSShip->SetSound(SoundsManager.GetSound(CGS_EXPLOSION_SND), CN_EXPLOSION_SND);	//Every time any ship, supplyship, circleship,... burst out
 
+	//Default Supply Ship sounds initialization 
+	defaultJMeiden->SetSoundsAmount(CN_MAX_SND);
+	defaultJMeiden->SetSound(SoundsManager.GetSound(CGS_DESCEND_SND), CN_DESCEND_SND);		//Every time the whole navy drops down a little bit
+	defaultJMeiden->SetSound(SoundsManager.GetSound(CGS_EXPLOSION_SND), CN_EXPLOSION_SND);	//Every time any ship, supplyship, circleship,... burst out
+
 	//Default Circle Ship sounds initialization 
 	defaultCShip->SetSoundsAmount(CN_MAX_SND);
 	defaultCShip->SetSound(SoundsManager.GetSound(CGS_DESCEND_SND), CN_DESCEND_SND);		//Every time the whole navy drops down a little bit
@@ -231,6 +238,7 @@ void CInitializationParser::InitializeDefaults()
 	defaultPlayer	= (CPlayer*)	CharacterPool->get(CHARS_PLAYER, UGKOBJM_NO_SUBTYPE);
 	defaultShip		= (CShip*)		CharacterPool->get(CHARS_SHIP, CS_NO_SHIP);
 	defaultSShip	= (CSupplyShip*)CharacterPool->get(CHARS_SUPPLYSHIP, CSS_NO_SUPPLY_SHIP);
+	defaultJMeiden	= (CJaidenMeiden*)CharacterPool->get(CHARS_JAIDENMEIDEN, CSJ_NO_SUPPLY_SHIP);
 	defaultCShip	= (CCircleShip*)CharacterPool->get(CHARS_CIRCLESHIP, CCS_LEFTTYPE);
 
 	//Set the default values for the default characters
@@ -278,6 +286,9 @@ void CInitializationParser::InitializeDefaults()
 	//SUPPLY SHIP
 	defaultSShip->AssignTMG(Game);
 	defaultSShip->Explosion.SubType = CE_SUPPLYSHIP_EXPLOSION;
+	//JAIDEN MEIDEN
+	defaultJMeiden->AssignTMG(Game);
+	defaultJMeiden->Explosion.SubType = CE_SUPPLYSHIP_EXPLOSION;
 	//CIRCLE SHIP
 	defaultCShip->AssignTMG(Game);
 	defaultCShip->Explosion.SubType = CE_SUPPLYSHIP_EXPLOSION;
@@ -299,6 +310,11 @@ void CInitializationParser::InitializeDefaults()
 	defaultSShip->SetLocalTimers(CSS_MAX_TIMERS);
 	defaultSShip->Timer[CS_RND_PERIOD].SetAlarm(Navy->Timer[CN_RND_PERIOD].GetAlarmPeriod());
 	defaultSShip->Timer[CS_UPD_PERIOD].SetAlarm(Navy->Timer[CN_UPD_PERIOD].GetAlarmPeriod());
+
+	//JAIDEN MEIDEN
+	defaultJMeiden->SetLocalTimers(CSS_MAX_TIMERS);
+	defaultJMeiden->Timer[CS_RND_PERIOD].SetAlarm(Navy->Timer[CN_RND_PERIOD].GetAlarmPeriod());
+	defaultJMeiden->Timer[CS_UPD_PERIOD].SetAlarm(Navy->Timer[CN_UPD_PERIOD].GetAlarmPeriod());
 
 	//CIRCLE SHIP
 	defaultCShip->SetLocalTimers(CCS_MAX_TIMERS);
@@ -608,6 +624,9 @@ void CInitializationParser::EndTag(CLiteHTMLTag *pTag, DWORD dwAppData, bool &bA
 				case CHARS_SUPPLYSHIP:
 					defaultSShip->IndAnimation2D = AnimationsManager.Animations.size()-1;
 						break;
+				case CHARS_JAIDENMEIDEN:
+					defaultJMeiden->IndAnimation2D = AnimationsManager.Animations.size()-1;
+						break;
 				case CHARS_CIRCLESHIP:
 					defaultCShip->IndAnimation2D = AnimationsManager.Animations.size()-1;
 					break;
@@ -733,6 +752,9 @@ CTextureAnimation *aniAux;
 			case CHARS_SUPPLYSHIP:
  				 defaultSShip->Hit_duration	= atof(UGKS_string2charstr(rText));
 				 break;
+			case CHARS_JAIDENMEIDEN:
+ 				 defaultJMeiden->Hit_duration	= atof(UGKS_string2charstr(rText));
+				 break;
 			}
 		break;
 	case FILE_IP:
@@ -771,6 +793,9 @@ CTextureAnimation *aniAux;
 				 break;
 			 case CHARS_SUPPLYSHIP:
  				 defaultSShip->Health	= atof(UGKS_string2charstr(rText));
+				 break;
+			 case CHARS_JAIDENMEIDEN:
+ 				 defaultJMeiden->Health	= atof(UGKS_string2charstr(rText));
 				 break;
 			}
 		break;
@@ -846,6 +871,16 @@ CTextureAnimation *aniAux;
 					defaultSShip->IndMesh = ind;
 					defaultSShip->Mesh = MeshesManager.GetMesh(ind);
 					defaultSShip->SetMeshName(defaultSShip->Mesh->GetFileName());
+				}
+				 break;
+			case CHARS_JAIDENMEIDEN:
+				if (MeshSemaphore[CHARS_JAIDENMEIDEN])
+				{
+					MeshSemaphore[CHARS_JAIDENMEIDEN] = false;
+					int ind = MeshesManager.AddModel(rText);
+					defaultJMeiden->IndMesh = ind;
+					defaultJMeiden->Mesh = MeshesManager.GetMesh(ind);
+					defaultJMeiden->SetMeshName(defaultJMeiden->Mesh->GetFileName());
 				}
 				 break;
 			case CHARS_CIRCLESHIP:
@@ -1004,6 +1039,9 @@ CTextureAnimation *aniAux;
 				case CHARS_SUPPLYSHIP:
 					defaultSShip->IndTexture2D = TexturesManager.CreateTexture(rText);
 					 break;
+				case CHARS_JAIDENMEIDEN:
+					defaultJMeiden->IndTexture2D = TexturesManager.CreateTexture(rText);
+					 break;
 				case CHARS_CIRCLESHIP:
 					defaultCShip->IndTexture2D = TexturesManager.CreateTexture(rText);
 					 break;
@@ -1065,6 +1103,9 @@ CTextureAnimation *aniAux;
 				 break;
 			case CHARS_SUPPLYSHIP:
 				defaultSShip->IndTexture3D = TexturesManager.CreateTexture(rText);
+				 break;
+			case CHARS_JAIDENMEIDEN:
+				defaultJMeiden->IndTexture3D = TexturesManager.CreateTexture(rText);
 				 break;
 			case CHARS_CIRCLESHIP:
 				defaultCShip->IndTexture3D = TexturesManager.CreateTexture(rText);
@@ -1190,6 +1231,9 @@ void CInitializationParser::ChangeDimValue(SpaceCoords Dim, double Value)
 		break;
 	case CHARS_SUPPLYSHIP:
 		GenericCharacter = defaultSShip;
+		break;
+	case CHARS_JAIDENMEIDEN:
+		GenericCharacter = defaultJMeiden;
 		break;
 	case CHARS_CIRCLESHIP:
 		GenericCharacter = defaultCShip;
